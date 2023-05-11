@@ -83,6 +83,9 @@ group :development do
   # debug
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # コード補完
+  gem 'solargraph'
 end
 
 group :test do
