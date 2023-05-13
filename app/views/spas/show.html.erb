@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @spa %>
+
+<div>
+  <%= link_to "Edit this spa", edit_spa_path(@spa) %> |
+  <%= link_to "Back to spas", spas_path %>
+
+  <%= button_to "Destroy this spa", @spa, method: :delete %>
+</div>
