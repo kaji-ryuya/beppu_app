@@ -3,7 +3,7 @@
   background-size: cover;
   height: 800px;
   position: relative;
-  background-position: center;
+  background-position: bottom;
 
   .top-inner-text {
     font-family: 'Toppan Bunkyu Mincho';
@@ -22,12 +22,12 @@
   }
 
   h1 {
-    font-size: 60px;
+    font-size: 70px;
   }
 
   .explanation {
-    padding: 10px;
-    background-color: rgb(238, 136, 64, 0.9);
+    padding: 25px 10px 10px 10px;
+    background-color: rgb(19, 21, 75, 0.8);
     border-radius: 30px;
     font-size: 20px;
     font-family: 'Toppan Bunkyu Mincho';
@@ -36,12 +36,27 @@
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: #D5DEFF;
+  }
+
+  .btn-primary {
+    border: none;
+    background: rgb(19, 21, 75);
+    border-radius: 77px;
+    font-size: 50px;
+    font-family: 'Toppan Bunkyu Mincho';
+    text-align: center;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #D5DEFF;
   }
 
   
 }
 
 
-  .header {
-    background-color: #13154b;
-  }
+.header {
+  background-color: #13154b;
+}
