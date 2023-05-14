@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Spas</h1>
+
+<div id="spas">
+  <% @spas.each do |spa| %>
+    <%= render spa %>
+    <p>
+      <%= link_to "Show this spa", spa %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New spa", new_spa_path %>
