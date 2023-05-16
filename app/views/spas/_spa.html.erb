@@ -1,7 +1,52 @@
-<div id="<%= dom_id spa %>">
-  <p>
-    <strong>Name:</strong>
-    <%= spa.name %>
-  </p>
+<div class='row'>
+  <div class='spa-name'>
+    <h1><%= spa.name %></h1>
+  </div>
+  <div class='spa-embed'>
 
+  </div>
+  <div class='spa-info'>
+    <table class='table table-striped'>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:spring_quality)) %></th>
+        <td><%= spa.spring_quality_i18n %></td>
+      </tr>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:address)) %></th>
+        <td><%= spa.address %></td>
+      </tr>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:telephone_number)) %></th>
+        <td><%= spa.telephone_number %></td>
+      </tr>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:holiday)) %></th>
+        <td><%= spa.holiday %></td>
+      </tr>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:business_time)) %></th>
+        <td><%= spa.business_time %></td>
+      </tr>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:parking)) %></th>
+        <td><%= spa.parking %></td>
+      </tr>
+      <tr>
+        <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
+        <td><%= spa.spa_url %></td>
+      </tr>
+      <% if spa.message.present? %>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:message)) %></th>
+          <td><%= spa.message %></td>
+        </tr>
+      <% end %>
+      <% if spa.family_bath_info.present? %>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:family_bath_info)) %></th>
+          <td><%= spa.family_bath_info %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
