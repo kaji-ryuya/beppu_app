@@ -1,0 +1,52 @@
+ja:
+  activerecord:
+    models:
+      spa: '温泉'
+    attributes:
+      spa:
+        name: '温泉名'
+        spring_quality: '泉質'
+        place: '場所'
+        location: 'ロケーション'
+        charactor: '特徴'
+        have_family_bath: '家族湯の有無'
+        address: '住所'
+        telephone_number: '電話番号'
+        price: '料金'
+        holiday: '定休日'
+        business_time: '営業時間'
+        is_child_bathing: '子供の入浴可否'
+        parking: '駐車場'
+        spa_url: '温泉のURL'
+        message: 'ひとこと'
+        family_bath_info: '家族風呂情報'
+  enums:
+    spa:
+      spring_quality:
+        simple: '単純温泉'
+        chloride: '塩化物泉'
+        bicarbonate: '炭酸水素塩泉'
+        sulfur: '硫黄泉'
+        sulfate: '硫酸塩泉'
+        acid: '酸性泉'
+        iron_containing: '含鉄泉'
+      place:
+        beppu: '別府'
+        hamawaki: '浜脇'
+        kamegawa: '亀川'
+        kannawa: '鉄輪'
+        kankaiji: '観海寺'
+        horita: '堀田'
+        sibaseki: '柴石'
+        myoban: '明礬'
+      location:
+        in_town: '街中'
+        ocean_view: 'オーシャンビュー'
+        in_nature: '自然の中'
+      charactor:
+        outdoor_bath: '露天風呂'
+        sauna: 'サウナ'
+        unique_bath: '砂風呂や蒸し湯など特徴的な風呂'
+        main_bath: '大浴場'
+        local_spa: 'ジモ泉（地元に根付いた温泉）'
+        family_bath: '貸切湯'
