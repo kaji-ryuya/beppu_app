@@ -1,52 +1,80 @@
-<div class='row'>
+
   <div class='spa-name'>
     <h1><%= spa.name %></h1>
   </div>
-  <div class='spa-embed'>
+  <div class='spa-photo'>
+  
+  </div>
+<div class='row'>
+    <div class='spa-info col-sm-8'>
+      <table class='table table-striped'>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:spring_quality)) %></th>
+          <td><%= spa.spring_quality_i18n %></td>
+        </tr>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:address)) %></th>
+          <td><%= spa.address %></td>
+        </tr>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:telephone_number)) %></th>
+          <td><%= spa.telephone_number %></td>
+        </tr>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:holiday)) %></th>
+          <td><%= spa.holiday %></td>
+        </tr>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:business_time)) %></th>
+          <td><%= spa.business_time %></td>
+        </tr>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:parking)) %></th>
+          <td><%= spa.parking %></td>
+        </tr>
+        <tr>
+          <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
+          <td><%= spa.spa_url %></td>
+        </tr>
+        <% if spa.message.present? %>
+          <tr>
+            <th><%= t(Spa.human_attribute_name(:message)) %></th>
+            <td><%= spa.message %></td>
+          </tr>
+        <% end %>
+        <% if spa.family_bath_info.present? %>
+          <tr>
+            <th><%= t(Spa.human_attribute_name(:family_bath_info)) %></th>
+            <td><%= spa.family_bath_info %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <!-- Google Mapsを表示するためのコンテナを作成します。 -->
+    <% if spa.lat.present? && spa.lng.present? %>
+      <div id="map" style="height: 400px; width: 400px;" class='col-sm'></div>
+    <% end %>
+    <!-- Google Maps APIを読み込みます。 -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG3KbpXBBSAWasjjHr1ConUPi8qOZi-5g"></script>
+    <!-- Google Mapsを初期化し、マーカーを作成します。 -->
+    <script>
+      // 緯度と経度を取得します。
+      var lat = <%= spa.lat %>;
+      var lng = <%= spa.lng %>;
 
-  </div>
-  <div class='spa-info'>
-    <table class='table table-striped'>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:spring_quality)) %></th>
-        <td><%= spa.spring_quality_i18n %></td>
-      </tr>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:address)) %></th>
-        <td><%= spa.address %></td>
-      </tr>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:telephone_number)) %></th>
-        <td><%= spa.telephone_number %></td>
-      </tr>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:holiday)) %></th>
-        <td><%= spa.holiday %></td>
-      </tr>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:business_time)) %></th>
-        <td><%= spa.business_time %></td>
-      </tr>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:parking)) %></th>
-        <td><%= spa.parking %></td>
-      </tr>
-      <tr>
-        <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
-        <td><%= spa.spa_url %></td>
-      </tr>
-      <% if spa.message.present? %>
-        <tr>
-          <th><%= t(Spa.human_attribute_name(:message)) %></th>
-          <td><%= spa.message %></td>
-        </tr>
-      <% end %>
-      <% if spa.family_bath_info.present? %>
-        <tr>
-          <th><%= t(Spa.human_attribute_name(:family_bath_info)) %></th>
-          <td><%= spa.family_bath_info %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+      // Google Mapsを初期化します。
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: lat, lng: lng},
+          zoom: 17
+        });
+
+        // マーカーを作成します。
+        var marker = new google.maps.Marker({
+          position: {lat: lat, lng: lng},
+          map: map,
+          title: '<%= spa.name %>'
+        });
+      }
+    </script>
 </div>
