@@ -1,12 +1,18 @@
-
-  <div class='spa-name'>
+<div class='d-flex align-items-center row'>
+  <div class='spa-name col-sm-3'>
     <h1><%= spa.name %></h1>
   </div>
-  <div class='spa-photo'>
-  
+  <div class='col-sm'>
+    
+      <%= link_to "一覧", spas_path, class: 'btn btn-primary' %>
+
+      <%= link_to "マップ", '#', class: 'btn btn-primary' %>
+
   </div>
+</div>
 <div class='row'>
-    <div class='spa-info col-sm-8'>
+    
+    <div class='spa-info col-sm-6'>
       <table class='table table-striped'>
         <tr>
           <th><%= t(Spa.human_attribute_name(:spring_quality)) %></th>
@@ -34,7 +40,7 @@
         </tr>
         <tr>
           <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
-          <td><%= spa.spa_url %></td>
+          <td><%= link_to spa.spa_url, spa.spa_url %></td>
         </tr>
         <% if spa.message.present? %>
           <tr>
@@ -50,9 +56,13 @@
         <% end %>
       </table>
     </div>
+    <div class='spa-photo col-sm'>
+      <div id="photo"></div>
+    </div>
+</div>
     <!-- Google Mapsを表示するためのコンテナを作成します。 -->
     <% if spa.lat.present? && spa.lng.present? %>
-      <div id="map" style="height: 400px; width: 400px;" class='col-sm'></div>
+      <div id="map" style="height: 600px; width: 100%;" class="text-center"></div>
     <% end %>
     <!-- Google Maps APIを読み込みます。 -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG3KbpXBBSAWasjjHr1ConUPi8qOZi-5g"></script>
@@ -75,6 +85,25 @@
           map: map,
           title: '<%= spa.name %>'
         });
+
+        // 施設写真の取得と表示
+        const placeService = new google.maps.places.PlacesService(map);
+        placeService.getDetails(
+          { placeId: "<%= spa.place_id %>" },
+          function (place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              const photoUrl =
+                place.photos && place.photos.length > 0 ? place.photos[<%= spa.photo_no %>].getUrl() : "";
+              const photoElement = document.getElementById("photo");
+              if (photoUrl) {
+                photoElement.innerHTML = `<img src="${photoUrl}" width="520" alt="${place.name}">`;
+              } else {
+                photoElement.innerHTML = "No photo available";
+              }
+            } else {
+              console.error(`Place details request failed: ${status}`);
+            }
+          }
+        );
       }
     </script>
-</div>

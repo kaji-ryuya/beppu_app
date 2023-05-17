@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_154224) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_092243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_154224) do
     t.string "family_bath_info"
     t.float "lat"
     t.float "lng"
+    t.string "place_id"
+    t.integer "photo_no"
     t.index ["name"], name: "index_spas_on_name", unique: true
   end
 

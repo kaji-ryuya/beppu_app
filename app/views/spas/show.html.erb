@@ -1,9 +1,7 @@
 <div class='container'>
   <p style="color: green"><%= notice %></p>
 
-  <%= render @spa %>
+  <%= render 'spa_for_show', { spa: @spa } %>
 
-  <div>
-    <%= link_to "Back to spas", spas_path %>
-  </div>
+  
 </div>
