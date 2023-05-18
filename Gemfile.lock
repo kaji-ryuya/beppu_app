@@ -121,6 +121,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     google_maps_api (0.2.0)
       google_maps_api-directions (~> 0)
       google_maps_api-distance_matrix (~> 0)
@@ -334,6 +335,7 @@ DEPENDENCIES
   enum_help
   factory_bot_rails
   faker
+  gmaps4rails
   google_maps_api
   google_places
   jbuilder

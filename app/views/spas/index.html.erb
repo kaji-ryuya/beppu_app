@@ -1,14 +1,64 @@
 <p style="color: green"><%= notice %></p>
+<div class='container'>
+  <h1>Spas</h1>
 
-<h1>Spas</h1>
+  <div id="spas">
+    <% @spas.each do |spa| %>
+      <%= render 'spa_for_index', { spa: spa } %>
+      <p>
+        <%= link_to "Show this spa", spa %>
+      </p>
+    <% end %>
+  </div>
 
-<div id="spas">
-  <% @spas.each do |spa| %>
-    <%= render spa %>
-    <p>
-      <%= link_to "Show this spa", spa %>
-    </p>
-  <% end %>
+  <%= link_to "New spa", new_spa_path %>
 </div>
 
-<%= link_to "New spa", new_spa_path %>
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: { lat: <%= @spas.first.lat %>, lng: <%= @spas.first.lng %> }
+    });
+
+    var markers = [];
+
+    <% @spas.each do |spa| %>
+      var marker_<%= spa.id %> = new google.maps.Marker({
+        position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
+        map: map,
+        title: '<%= spa.name %>'
+      });
+
+      markers.push(marker_<%= spa.id %>);
+
+      const request_<%= spa.id %> = {
+        placeId: '<%= spa.place_id %>',
+        fields: ['photos']
+      };
+
+      const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
+      service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+          var photoUrl = place.photos[0].getUrl({ maxWidth: 100 });
+          var photoElement = document.getElementById("photo-<%= spa.id %>");
+          photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真">`;
+        }
+      });
+    <% end %>
+
+    function openInfoWindow(index) {
+      var marker = markers[index];
+      var infowindow = new google.maps.InfoWindow({
+        content: marker.title
+      });
+      infowindow.open(map, marker);
+    }
+
+    markers.forEach(function(marker, index) {
+      marker.addListener('click', function() {
+        openInfoWindow(index);
+      });
+    });
+  }
+</script>
