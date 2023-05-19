@@ -1,17 +1,12 @@
 <p style="color: green"><%= notice %></p>
 <div class='container'>
-  <h1>Spas</h1>
+  <h1>温泉一覧</h1>
 
-  <div id="spas">
+  <div id="spas row">
     <% @spas.each do |spa| %>
-      <%= render 'spa_for_index', { spa: spa } %>
-      <p>
-        <%= link_to "Show this spa", spa %>
-      </p>
+        <%= render 'spa_for_index', { spa: spa } %>
     <% end %>
   </div>
-
-  <%= link_to "New spa", new_spa_path %>
 </div>
 
 <script>
@@ -40,9 +35,9 @@
       const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
       service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
-          var photoUrl = place.photos[0].getUrl({ maxWidth: 100 });
+          var photoUrl = place.photos[0].getUrl({ maxHeight: 237, maxWidth: 317 });
           var photoElement = document.getElementById("photo-<%= spa.id %>");
-          photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真">`;
+          photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
         }
       });
     <% end %>
