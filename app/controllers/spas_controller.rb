@@ -3,7 +3,7 @@ class SpasController < ApplicationController
 
   # GET /spas or /spas.json
   def index
-    @spas = Spa.all
+    @spas = Spa.all.page(params[:page]).order(id: :desc)
   end
 
   # GET /spas/1 or /spas/1.json
