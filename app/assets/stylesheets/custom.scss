@@ -6,4 +6,16 @@
 
 h1 {
   font-family: 'Toppan Bunkyu Mincho';
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.pagination>.page-item>a {
+  color: rgb(19, 21, 75);
+}
+
+.pagination>.active>a {     
+  background: rgb(19, 21, 75);     /*背景の色を変える*/
+  border: rgb(19, 21, 75);
+  color:#D5DEFF;
 }
