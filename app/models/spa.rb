@@ -11,4 +11,7 @@ class Spa < ApplicationRecord
   validates :charactor, presence:true
   validates :have_family_bath, inclusion: [true, false]
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["charactor", "have_family_bath", "is_child_bathing", "location", "name", "place", "spring_quality"]
+  end
 end
