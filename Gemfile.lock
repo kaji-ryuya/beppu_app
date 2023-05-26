@@ -146,6 +146,18 @@ GEM
     jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
     json (2.6.3)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -219,6 +231,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rbs (2.8.4)
     regexp_parser (2.8.0)
     reline (0.3.3)
@@ -261,6 +277,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
+    rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -269,6 +286,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (4.9.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     solargraph (0.49.0)
       backport (~> 1.2)
       benchmark
@@ -310,6 +331,11 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.0.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -338,20 +364,24 @@ DEPENDENCIES
   google_places
   jbuilder
   jsbundling-rails
+  kaminari
   pg
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-i18n
+  ransack
   rspec-rails
   rubocop
   rubocop-rails
   sassc-rails
+  selenium-webdriver (= 4.9.0)
   solargraph
   sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
+  webdrivers
 
 RUBY VERSION
    ruby 3.2.2p53

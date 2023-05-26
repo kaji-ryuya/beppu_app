@@ -3,11 +3,7 @@
     <h1><%= spa.name %></h1>
   </div>
   <div class='col-sm'>
-    
-      <%= link_to "一覧", spas_path, class: 'btn btn-primary' %>
-
-      <%= link_to "マップ", '#', class: 'btn btn-primary' %>
-
+    <!-- ブックマークと行ったボタン設置予定 -->
   </div>
 </div>
 <div class='row'>
@@ -60,19 +56,18 @@
       <div id="photo"></div>
     </div>
 </div>
-    <!-- Google Mapsを表示するためのコンテナを作成します。 -->
+    <!-- Google Mapsを表示するためのコンテナを作成 -->
     <% if spa.lat.present? && spa.lng.present? %>
       <div id="map" style="height: 600px; width: 100%;" class="text-center"></div>
     <% end %>
-    <!-- Google Maps APIを読み込みます。 -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG3KbpXBBSAWasjjHr1ConUPi8qOZi-5g"></script>
-    <!-- Google Mapsを初期化し、マーカーを作成します。 -->
+    
+    <!-- Google Mapsを初期化し、マーカーを作成 -->
     <script>
-      // 緯度と経度を取得します。
+      // 緯度と経度を取得
       var lat = <%= spa.lat %>;
       var lng = <%= spa.lng %>;
 
-      // Google Mapsを初期化します。
+      // Google Mapsを初期化
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: lat, lng: lng},

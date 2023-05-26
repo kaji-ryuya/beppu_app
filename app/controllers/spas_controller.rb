@@ -3,7 +3,8 @@ class SpasController < ApplicationController
 
   # GET /spas or /spas.json
   def index
-    @spas = Spa.all
+    @q = Spa.ransack(params[:q])
+    @spas = @q.result(distinct: true).page(params[:page]).order(id: :asc)
   end
 
   # GET /spas/1 or /spas/1.json

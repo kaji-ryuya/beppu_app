@@ -61,6 +61,9 @@ gem 'dotenv'
 gem 'google_places'
 gem 'google_maps_api'
 
+gem 'kaminari'
+gem 'ransack'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -72,6 +75,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "capybara"
+  gem 'webdrivers'
+  gem 'selenium-webdriver', '4.9.0'
 
   # dummy data
   gem "faker"
