@@ -1,11 +1,11 @@
 <%= search_form_for @q, url: url do |f| %>
   <div class="input-group mb-3 row">
     <%= f.search_field :name_cont, class: 'form-control', placeholder: '温泉名を入力' %>
-    <%= f.select :spring_quality, Spa.spring_qualities_i18n.values.map { |k| [t("enum.spas.spring_quality.#{k}"), k] }, { include_blank: "泉質" }, class: 'form-control form-select' %>
-    <%= f.select :have_family_bath_eq, [['貸切湯あり', true], ['貸切湯なし', false]], { include_blank: "貸切湯" }, class: 'form-control form-select' %>
-    <%= f.select :place, Spa.places_i18n.values.map { |k| [t("enum.spas.place.#{k}"), k] }, { include_blank: "別府八湯" }, class: 'form-control form-select' %>
+    <%= f.select :spring_quality_eq, Spa.spring_qualities_i18n.invert.map{|key, value| [key, Spa.spring_qualities[value]]}, { include_blank: "泉質" }, { class: 'form-control form-select', id: 'select_spring_quality' } %>
+    <%= f.select :have_family_bath_eq, [['貸切湯あり', true], ['貸切湯なし', false]], { include_blank: "貸切湯" }, { class: 'form-control form-select', id: 'select_have_family_bath' } %>
+    <%= f.select :place_eq, Spa.places_i18n.invert.map{|key, value| [key, Spa.places[value]]}, { include_blank: "別府八湯" }, { class: 'form-control form-select', id: 'select_place' }%>
     <div class="input-group-append">
-      <%= f.submit '検索', class: 'btn btn-primary' %>
+      <%= f.submit '検索', class: 'btn btn-primary', id: 'spa_search_submit' %>
     </div>
   </div>
 <% end %>

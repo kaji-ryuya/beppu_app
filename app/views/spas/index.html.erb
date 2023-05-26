@@ -13,52 +13,55 @@
   <%= paginate @spas %>
 
 </div>
-
-<script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: { lat: <%= @spas.first.lat %>, lng: <%= @spas.first.lng %> }
-    });
-
-    var markers = [];
-
-    <% @spas.each do |spa| %>
-      var marker_<%= spa.id %> = new google.maps.Marker({
-        position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
-        map: map,
-        title: '<%= spa.name %>'
+<% if @spas.present? %>
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: { lat: <%= @spas.first.lat %>, lng: <%= @spas.first.lng %> }
       });
 
-      markers.push(marker_<%= spa.id %>);
+      var markers = [];
 
-      const request_<%= spa.id %> = {
-        placeId: '<%= spa.place_id %>',
-        fields: ['photos']
-      };
+      <% @spas.each do |spa| %>
+        var marker_<%= spa.id %> = new google.maps.Marker({
+          position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
+          map: map,
+          title: '<%= spa.name %>'
+        });
 
-      const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
-      service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
-          var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 237, maxWidth: 317 });
-          var photoElement = document.getElementById("photo-<%= spa.id %>");
-          photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
-        }
+        markers.push(marker_<%= spa.id %>);
+
+        const request_<%= spa.id %> = {
+          placeId: '<%= spa.place_id %>',
+          fields: ['photos']
+        };
+
+        const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
+        service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+            var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 237, maxWidth: 317 });
+            var photoElement = document.getElementById("photo-<%= spa.id %>");
+            photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
+          }
+        });
+      <% end %>
+
+      function openInfoWindow(index) {
+        var marker = markers[index];
+        var infowindow = new google.maps.InfoWindow({
+          content: marker.title
+        });
+        infowindow.open(map, marker);
+      }
+
+      markers.forEach(function(marker, index) {
+        marker.addListener('click', function() {
+          openInfoWindow(index);
+        });
       });
-    <% end %>
-
-    function openInfoWindow(index) {
-      var marker = markers[index];
-      var infowindow = new google.maps.InfoWindow({
-        content: marker.title
-      });
-      infowindow.open(map, marker);
     }
-
-    markers.forEach(function(marker, index) {
-      marker.addListener('click', function() {
-        openInfoWindow(index);
-      });
-    });
-  }
-</script>
+  </script>
+<% else %>
+  <p>条件に合う温泉がありません。</p>
+<% end %>
