@@ -20,7 +20,6 @@ class Question::SpaQualityController < ApplicationController
   end
 
   def charactor_post
-    spring_quality = session[:spring_quality]
     if request.post? && params[:charactor].present?
       session[:charactor] = params[:charactor]
       redirect_to question_spa_quality_answer_path

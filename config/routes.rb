@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       get 'location'
       post 'location_post'
       get 'choice'
+      get 'spa_quality'
+      post 'spa_quality_post'
+      get 'place'
+      post 'place_post'
       
       get 'answer'
     end
