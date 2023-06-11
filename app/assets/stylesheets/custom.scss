@@ -10,6 +10,10 @@ h1 {
   margin-bottom: 30px;
 }
 
+h2 {
+  font-family: 'Toppan Bunkyu Mincho';
+}
+
 .pagination>.page-item>a {
   color: rgb(19, 21, 75);
 }
@@ -18,4 +22,75 @@ h1 {
   background: rgb(19, 21, 75);     /*背景の色を変える*/
   border: rgb(19, 21, 75);
   color:#D5DEFF;
+}
+
+
+
+.furo-choice {
+  position: relative;
+  height: 225px;
+  width: 225px;
+  margin: 30px;
+}
+
+.furo-choice-btn {
+  display: none;
+}
+
+.furo-choice-img{
+  position: absolute;
+  opacity: 0.75;
+}
+
+.furo-choice-img:hover {
+  opacity: 1.0;
+}
+
+.furo-choice input[type='radio']:checked + label {
+  opacity: 1.0;
+}
+
+.furo-choice-img p{
+  font-family: 'Toppan Bunkyu Mincho';
+  position: absolute;
+  text-align: center;
+  top:55%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  color: rgb(19, 21, 75);
+}
+
+.no-wrap {
+  font-size:40px;
+  white-space: nowrap;
+}
+
+.charactor-choice {
+  margin: 30px;
+}
+
+.charactor-choice p{
+  font-family: 'Toppan Bunkyu Mincho';
+  position: absolute;
+  text-align: center;
+  color: rgb(19, 21, 75);
+}
+
+.charactor-img {
+  border-radius: 10px;
+}
+
+.location-choice {
+  margin: 30px 60px 30px 0px;
+}
+
+.location-choice p{
+  font-family: 'Toppan Bunkyu Mincho';
+  position: absolute;
+  text-align: center;
+  color: rgb(19, 21, 75);
+}
+
+.location-img {
+  border-radius: 10px;
 }

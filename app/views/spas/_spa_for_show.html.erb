@@ -34,10 +34,12 @@
           <th><%= t(Spa.human_attribute_name(:parking)) %></th>
           <td><%= spa.parking %></td>
         </tr>
-        <tr>
-          <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
-          <td><%= link_to spa.spa_url, spa.spa_url %></td>
-        </tr>
+        <% if spa.spa_url.present? %>
+          <tr>
+            <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
+            <td><%= link_to spa.spa_url, spa.spa_url %></td>
+          </tr>
+        <% end %>
         <% if spa.message.present? %>
           <tr>
             <th><%= t(Spa.human_attribute_name(:message)) %></th>
@@ -62,6 +64,9 @@
     <% end %>
     
     <!-- Google Mapsを初期化し、マーカーを作成 -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
+    </script>
     <script>
       // 緯度と経度を取得
       var lat = <%= spa.lat %>;

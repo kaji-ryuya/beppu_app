@@ -1,0 +1,81 @@
+<div class='container'>
+  <h2 class='mt-5'>どんな特徴のお風呂に入りたいか選んで「次へ」を押してください。</h2>
+  <%= form_with(url: question_spa_quality_charactor_post_path, method: :post, local: true) do |f| %>
+    <div class='row'>
+      <% if @charactors.include?('outdoor_bath') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='outdoor_bath' class='charactor-choice-img'>
+            <%= image_tag 'charactor/roten.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :outdoor_bath, id: 'outdoor_bath', class: 'charactor-choice-btn' %>
+          <%= f.label :outdoor_bath, '露天風呂' %>
+        </div>
+      <% end %>
+
+      <% if @charactors.include?('sauna') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='sauna' class='charactor-choice-img'>
+            <%= image_tag 'charactor/sauna.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :sauna, id: 'sauna', class: 'charactor-choice-btn' %>
+          <%= f.label :sauna, 'サウナ' %>
+        </div>
+      <% end %>
+
+      <% if @charactors.include?('unique_bath') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='unique_bath' class='charactor-choice-img'>
+            <%= image_tag 'charactor/unique_bath.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :unique_bath, id: 'unique_bath', class: 'charactor-choice-btn' %>
+          <%= f.label :unique_bath, '砂風呂など特徴的なお風呂' %>
+        </div>
+      <% end %>
+
+      <% if @charactors.include?('main_bath') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='main_bath' class='charactor-choice-img'>
+            <%= image_tag 'charactor/uchiyu.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :main_bath, id: 'main_bath', class: 'charactor-choice-btn' %>
+          <%= f.label :main_bath, '大浴場/内湯' %>
+        </div>
+      <% end %>
+
+
+      <% if @charactors.include?('local_spa') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='local_spa' class='charactor-choice-img'>
+            <%= image_tag 'charactor/jimosen.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :local_spa, id: 'local_spa', class: 'charactor-choice-btn' %>
+          <%= f.label :local_spa, 'ジモ泉(地元に根付いている温泉)' %>
+        </div>
+      <% end %>
+
+      <% if @charactors.include?('family_bath') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='family_bath' class='charactor-choice-img'>
+            <%= image_tag 'charactor/kashikiriyu.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :family_bath, id: 'family_bath', class: 'charactor-choice-btn' %>
+          <%= f.label :family_bath, '貸切湯(家族湯)' %>
+        </div>
+      <% end %>
+
+      <% if @charactors.include?('main_bath') %>
+        <div class='charactor-choice col-lg-3'>
+          <label for='foot_bath' class='charactor-choice-img'>
+            <%= image_tag 'charactor/ashiyu.jpg', :size => '300x200', class: 'charactor-img' %>
+          </label><br />
+          <%= f.radio_button :charactor, :foot_bath, id: 'foot_bath', class: 'charactor-choice-btn' %>
+          <%= f.label :foot_bath, '足湯' %>
+        </div>
+      <% end %>
+
+      <div class='col-lg-3 d-flex align-items-end justify-content-center pb-5'>
+        <%= f.submit '次へ', class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+  <% end %>
+</div>

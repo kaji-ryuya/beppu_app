@@ -1,0 +1,36 @@
+<div class='container'>
+  <h2 class='mt-5'>あなたの入りたいお風呂を選んで「次へ」を押してください。</h2>
+  <%= form_with(url: question_family_bath_location_post_path, method: :post, local: true) do |f| %>
+    <div class='row'>
+      <div class='text-start mt-2'>
+        <%= f.submit '次へ', class: 'btn btn-primary btn-lg me-5' %>
+      </div>
+      <div class='location-choice col-lg-3'>
+        <label for='in_town' class='location-choice-img'>
+          <%= image_tag 'location/town.jpeg', :size => '300x200', class: 'location-img' %>
+        </label><br />
+        <%= f.radio_button :location, :in_town, id: 'in_town', class: 'location-choice-btn' %>
+        <%= f.label :in_town, '街の中' %>
+      </div>
+
+      <div class='location-choice col-lg-3'>
+        <label for='ocean_view' class='location-choice-img'>
+          <%= image_tag 'location/ocean.jpeg', :size => '300x200', class: 'location-img' %>
+        </label><br />
+        <%= f.radio_button :location, :ocean_view, id: 'ocean_view', class: 'location-choice-btn' %>
+        <%= f.label :ocean_view, 'オーシャンビュー' %>
+      </div>
+
+      <div class='location-choice col-lg-3'>
+        <label for='in_nature' class='location-choice-img'>
+          <%= image_tag 'location/nature.jpeg', :size => '300x200', class: 'location-img' %>
+        </label><br />
+        <%= f.radio_button :location, :in_nature, id: 'in_nature', class: 'location-choice-btn' %>
+        <%= f.label :in_nature, '緑の中' %>
+      </div>
+      
+      
+      
+    </div>
+  <% end %>
+</div>

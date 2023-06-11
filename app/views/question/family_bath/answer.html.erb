@@ -1,18 +1,19 @@
 <div class='container'>
-  <h1>温泉一覧</h1>
-  <%= render 'shared/search_form', url: spas_path %>
+  <h1>あなたにおすすめの温泉</h1>
+  <p>選んだ選択肢</p>
+  <p>泉質 : <%= @spring_quality %></p>
+  <p>特徴 : <%= @charactor %></p>
   <div id="spas" class="row">
     <% @spas.each do |spa| %>
       <div class="col-lg-4">
-        <%= render 'spa_for_index', { spa: spa } %>
+        <%= render 'spas/spa_for_index', { spa: spa } %>
       </div>
     <% end %>
   </div>
 
-  <%= paginate @spas %>
-
 </div>
 <% if @spas.present? %>
+  
   <script async defer
           src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
   </script>

@@ -1,17 +1,15 @@
 class QuestionController < ApplicationController
 
   def question
-    @spas = Spa.all
+    session.delete(:spring_quality) if session[:spring_quality].present?
+    session.delete(:charactor) if session[:charactor].present?
   end
 
-  def search
-    spa_quality_value = params[:spa_quality]
-    have_family_bath_value = params[:have_family_bath]
-    place_value = params[:place]
+  def answer
+    @spring_quality = session[:spring_quality]
+    @have_family_bath = session[:have_family_bath]
+    @charactor = session[:charactor]
+    @spas = Spa.where(spring_quality: @spring_quality).where(have_family_bath: @have_family_bath).where(charactor: @charactor).order('random()').limit(3)
 
-    @results = Spa.where(spa_quality: spa_quality_value, have_family_bath: have_family_bath_value, place: place_value).order("RANDOM()").limit(3)
-  end
-
-  def index
   end
 end
