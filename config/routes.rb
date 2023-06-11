@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       post 'spa_quality_post'
       get 'place'
       post 'place_post'
-      
       get 'answer'
     end
     get 'answer'

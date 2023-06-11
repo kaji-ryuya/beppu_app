@@ -13,10 +13,13 @@ class Question::FamilyBathController < ApplicationController
     end
   end
 
-  def choice; end
+  def choice
+    session.delete(:spring_quality) if session[:spring_quality].present?
+    session.delete(:place) if session[:place].present?
+  end
 
   def spa_quality
-    @spring_qualities = selected_spas.dictinct.pluck(:spring_quality)
+    @spring_qualities = @selected_spas.distinct.pluck(:spring_quality)
   end
 
   def spa_quality_post
@@ -29,7 +32,7 @@ class Question::FamilyBathController < ApplicationController
   end
 
   def place
-    @places = selected_spas.dictinct.pluck(:place)
+    @places = @selected_spas.distinct.pluck(:place)
   end
 
   def place_post
@@ -42,16 +45,25 @@ class Question::FamilyBathController < ApplicationController
   end
 
   def answer
-    
+    @location =session[:location]
+    if session[:spring_quality].present?
+      @spring_quality = session[:spring_quality]
+      @spas = Spa.where(have_family_bath: 'TRUE').where(location: @location).where(spring_quality: @spring_quality).order('random()').limit(3)
+    elsif session[:place].present?
+      @place = session[:place]
+      @spas = Spa.where(have_family_bath: 'TRUE').where(location: @location).where(place: @place).order('random()').limit(3)
+    else
+      @spas = Spa.where(have_family_bath: 'TRUE').where(location: @location).order('random()').limit(3)
+    end
   end
 
   private
 
   def set_session_location
-    location = session[:location]
+    @location = session[:location]
   end
 
   def choiced_location
-    selected_spas = Spa.where(have_family_bath: TRUE).where(location:location)
+    @selected_spas = Spa.where(have_family_bath: 'TRUE').where(location: @location)
   end
 end

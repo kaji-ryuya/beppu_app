@@ -2,7 +2,7 @@
   <h2 class='mt-5'>好きな泉質を一つ選んで「次へ」を押してください。</h2>
   <%= form_with(url: question_family_bath_spa_quality_post_path, method: :post, local: true) do |f| %>
     <div class='row'>
-      <% if @spa_qualities.include?('simple') %>
+      <% if @spring_qualities.include?('simple') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :simple, id: 'simple', class: 'furo-choice-btn' %>
           <label for='simple' class='furo-choice-img'>
@@ -12,7 +12,7 @@
         </div>
       <% end %>
 
-      <% if @spa_qualities.include?('chloride') %>
+      <% if @spring_qualities.include?('chloride') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :chloride, id: 'chloride', class: 'furo-choice-btn' %>
           <label for='chloride' class='furo-choice-img'>
@@ -22,7 +22,7 @@
         </div>
       <% end %>
 
-      <% if @spa_qualities.include?('bicarbonate') %>
+      <% if @spring_qualities.include?('bicarbonate') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :bicarbonate, id: 'bicarbonate', class: 'furo-choice-btn' %>
           <label for='bicarbonate' class='furo-choice-img'>
@@ -32,7 +32,7 @@
         </div>
       <% end %>
 
-      <% if @spa_qualities.include?('sulfur') %>
+      <% if @spring_qualities.include?('sulfur') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :sulfur, id: 'sulfur', class: 'furo-choice-btn' %>
           <label for='sulfur' class='furo-choice-img'>
@@ -42,7 +42,7 @@
         </div>
       <% end %>
 
-      <% if @spa_qualities.include?('sulfate') %>
+      <% if @spring_qualities.include?('sulfate') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :sulfate, id: 'sulfate', class: 'furo-choice-btn' %>
           <label for='sulfate' class='furo-choice-img'>
@@ -52,7 +52,7 @@
         </div>
       <% end %>
 
-      <% if @spa_qualities.include?('acid') %>
+      <% if @spring_qualities.include?('acid') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :acid, id: 'acid', class: 'furo-choice-btn' %>
           <label for='acid' class='furo-choice-img'>
@@ -62,7 +62,7 @@
         </div>
       <% end %>
 
-      <% if @spa_qualities.include?('iron_containing') %>
+      <% if @spring_qualities.include?('iron_containing') %>
         <div class='furo-choice col-lg-3'>
           <%= f.radio_button :spring_quality, :iron_containing, id: 'iron_containing', class: 'furo-choice-btn' %>
           <label for='iron_containing' class='furo-choice-img'>
