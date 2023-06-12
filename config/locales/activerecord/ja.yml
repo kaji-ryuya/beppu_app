@@ -42,7 +42,7 @@ ja:
       location:
         in_town: '街中'
         ocean_view: 'オーシャンビュー'
-        in_nature: '自然の中'
+        in_nature: '緑の中'
       charactor:
         outdoor_bath: '露天風呂'
         sauna: 'サウナ'
