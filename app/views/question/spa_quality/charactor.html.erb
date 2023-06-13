@@ -1,6 +1,13 @@
 <div class='container'>
-  <h2 class='mt-5'>どんな特徴のお風呂に入りたいか選んで「次へ」を押してください。</h2>
   <%= form_with(url: question_spa_quality_charactor_post_path, method: :post, local: true) do |f| %>
+    <div class='row'>
+      <div class='col-lg-10'>
+        <h2 class='mt-5'>どんな特徴のお風呂に入りたいか選んで「次へ」を押してください。</h2>
+      </div>
+      <div class='col-lg-2 text-end d-flex align-items-end'>
+        <%= f.submit '次へ', class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
     <div class='row'>
       <% if @charactors.include?('outdoor_bath') %>
         <div class='charactor-choice col-lg-3'>
@@ -72,10 +79,6 @@
           <%= f.label :foot_bath, '足湯' %>
         </div>
       <% end %>
-
-      <div class='col-lg-3 d-flex align-items-end justify-content-center pb-5'>
-        <%= f.submit '次へ', class: 'btn btn-primary btn-lg' %>
-      </div>
     </div>
   <% end %>
 </div>

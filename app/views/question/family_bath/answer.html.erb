@@ -1,14 +1,24 @@
 <div class='container'>
-  <h1>あなたにおすすめの温泉</h1>
-  <p>選んだ選択肢</p>
-  <p>ロケーション : <%= t(@location, scope: 'location') %></p>
-  <% if @sprong_quality.present?%>
-    <p>泉質 : <%= t(@spring_quality, scope: 'spring_quality') %></p>
-  <% end %>
-  <% if @place.present?%>
-    <p>別府八湯 : <%= t(@place, scope: 'place') %></p>
-  <% end %>
-  <div id="spas" class="row">
+  <div class='row'>
+    <div class='col'>
+      <h1>あなたにおすすめの温泉</h1>
+    </div>
+    <div class='col  text-end d-flex align-items-center'>
+      <%= link_to 'もう一度探す', question_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+  <div class='choosed-choice'>
+    <p>選んだ選択肢<br />
+    ロケーション : <%= t(@location, scope: 'location') %><br />
+    <% if @spring_quality.present?%>
+      泉質 : <%= t(@spring_quality, scope: 'spring_quality') %><br />
+    <% end %>
+    <% if @place.present?%>
+      別府八湯 : <%= t(@place, scope: 'place') %>
+    <% end %>
+    </p>
+  </div>
+  <div id="spas" class="row mt-2">
     <% @spas.each do |spa| %>
       <div class="col-lg-4 col-md-6">
         <%= render 'spas/spa_for_index', { spa: spa } %>
