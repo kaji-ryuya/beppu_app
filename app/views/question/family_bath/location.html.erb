@@ -1,10 +1,14 @@
 <div class='container'>
-  <h2 class='mt-5'>あなたの入りたいお風呂を選んで「次へ」を押してください。</h2>
   <%= form_with(url: question_family_bath_location_post_path, method: :post, local: true) do |f| %>
     <div class='row'>
-      <div class='text-start mt-2'>
-        <%= f.submit '次へ', class: 'btn btn-primary btn-lg me-5' %>
+      <div class='col-lg-10'>
+        <h2 class='mt-5'>あなたの入りたいお風呂を選んで「次へ」を押してください。</h2>
       </div>
+      <div class='col-lg-2 text-end d-flex align-items-end'>
+        <%= f.submit '次へ', class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+    <div class='row'>
       <div class='location-choice col-lg-3'>
         <label for='in_town' class='location-choice-img'>
           <%= image_tag 'location/town.jpeg', :size => '300x200', class: 'location-img' %>
