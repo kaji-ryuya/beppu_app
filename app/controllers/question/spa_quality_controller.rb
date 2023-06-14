@@ -9,7 +9,8 @@ class Question::SpaQualityController < ApplicationController
       session[:spring_quality] = params[:spring_quality]
       redirect_to question_spa_quality_charactor_path
     else
-      render :spa_quality
+      # redirectが必要というエラーが出た
+      redirect_to question_spa_quality_spa_quality_path, danger: '選択してください'
     end
   end
 
@@ -24,7 +25,7 @@ class Question::SpaQualityController < ApplicationController
       session[:charactor] = params[:charactor]
       redirect_to question_spa_quality_answer_path
     else
-      render :charactor
+      redirect_to question_spa_quality_charactor_path, danger: '選択してください'
     end
   end
 

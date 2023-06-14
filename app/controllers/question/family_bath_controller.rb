@@ -9,7 +9,7 @@ class Question::FamilyBathController < ApplicationController
       session[:location] = params[:location]
       redirect_to question_family_bath_choice_path
     else
-      render :location
+      redirect_to question_family_bath_location_path, danger: '選択してください'
     end
   end
 
@@ -27,7 +27,7 @@ class Question::FamilyBathController < ApplicationController
       session[:spring_quality] = params[:spring_quality]
       redirect_to question_family_bath_answer_path
     else
-      render :spa_quality
+      redirect_to question_family_bath_spa_quality_path, danger: '選択してください'
     end
   end
 
@@ -40,7 +40,7 @@ class Question::FamilyBathController < ApplicationController
       session[:place] = params[:place]
       redirect_to question_family_bath_answer_path
     else
-      render :place
+      redirect_to question_family_bath_place_path, danger: '選択してください'
     end
   end
 
