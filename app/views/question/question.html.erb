@@ -1,0 +1,23 @@
+<div class='container'>
+    <h2 class='text-center mt-5'>いくつかの質問からあなたにおすすめの温泉が見つかります。</h2>
+    <h2 class='text-center mt-3 mb-5'>まずは探している温泉は貸切湯もしくはそれ以外かを教えてください。</h2>
+  
+    <div class='text-center'>
+      <div class='row'>
+        <div class='col'>
+          <%= link_to(question_family_bath_location_path, class: 'link-dark') do %>
+            <%= image_tag 'onsen_capybara.png', :size => '300x300', class: 'question-img' %>
+            <p class='lead'>貸切湯</p>
+          <% end %>
+        </div>
+        <div class='col'>
+          <%= link_to(question_spa_quality_spa_quality_path, class: 'link-dark') do %>
+            <%= image_tag 'onsen_animals.png', :size => '350x275', class: 'question-img' %>
+            <p class='mt-4 lead'>貸切湯以外</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+  
+</div>

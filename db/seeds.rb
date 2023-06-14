@@ -8,7 +8,7 @@
 
 require "csv"
 
-CSV.foreach('db/beppu_onsen_list.csv', headers: true) do |info|
+CSV.foreach('db/beppu_onsen_list3.csv', headers: true) do |info|
   Spa.create(
     name: info[1],
     spring_quality: info[2].to_i,
@@ -25,6 +25,10 @@ CSV.foreach('db/beppu_onsen_list.csv', headers: true) do |info|
     parking: info[13],
     spa_url: info[15],
     message: info[16],
-    family_bath_info: info[17]
+    family_bath_info: info[17],
+    lat: info[18].to_f,
+    lng: info[19].to_f,
+    place_id: info[20],
+    photo_no: info[21].to_i
   )
 end

@@ -1,0 +1,28 @@
+<div class='container'>
+  <div calss='text-center'>
+    <h2 class='mt-5'>次に「泉質」「別府八湯の場所」のどちらから選びますか。</h2>
+    <h2 class='mt-3'>どちらも気にしない場合は「特に気にしない」を選択してください。</h2>
+    <div class='text-center'>
+      <div class='row'>
+        <div class='col'>
+          <%= link_to(question_family_bath_spa_quality_path, class: 'link-dark') do %>
+            <%= image_tag 'umijigoku.png', :size => '300x300', class: 'question-img' %>
+            <p class='lead'>泉質</p>
+          <% end %>
+        </div>
+        <div class='col'>
+          <%= link_to(question_family_bath_place_path, class: 'link-dark') do %>
+            <%= image_tag 'chinoikejigoku.png', :size => '300x300', class: 'question-img' %>
+            <p class='lead'>別府八湯</p>
+          <% end %>
+        </div>
+        <div class='col'>
+          <%= link_to(question_family_bath_answer_path, class: 'link-dark') do %>
+            <%= image_tag 'bouzujigoku.png', :size => '300x300', class: 'question-img' %>
+            <p class='lead'>特に気にしない</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

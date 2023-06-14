@@ -1,0 +1,81 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col'>
+      <h1>あなたにおすすめの温泉</h1>
+    </div>
+    <div class='col  text-end d-flex align-items-center'>
+      <%= link_to 'もう一度探す', question_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+  <div class='choosed-choice'>
+    <p>選んだ選択肢<br />
+    ロケーション : <%= t(@location, scope: 'location') %><br />
+    <% if @spring_quality.present?%>
+      泉質 : <%= t(@spring_quality, scope: 'spring_quality') %><br />
+    <% end %>
+    <% if @place.present?%>
+      別府八湯 : <%= t(@place, scope: 'place') %>
+    <% end %>
+    </p>
+  </div>
+  <div id="spas" class="row mt-2">
+    <% @spas.each do |spa| %>
+      <div class="col-lg-4 col-md-6">
+        <%= render 'spas/spa_for_index', { spa: spa } %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
+</script>
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: { lat: <%= @spas.first.lat %>, lng: <%= @spas.first.lng %> }
+    });
+
+    var markers = [];
+
+    <% @spas.each do |spa| %>
+      var marker_<%= spa.id %> = new google.maps.Marker({
+        position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
+        map: map,
+        title: '<%= spa.name %>'
+      });
+
+      markers.push(marker_<%= spa.id %>);
+
+      const request_<%= spa.id %> = {
+        placeId: '<%= spa.place_id %>',
+        fields: ['photos']
+      };
+
+      const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
+      service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+          var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 237, maxWidth: 317 });
+          var photoElement = document.getElementById("photo-<%= spa.id %>");
+          photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
+        }
+      });
+    <% end %>
+
+    function openInfoWindow(index) {
+      var marker = markers[index];
+      var infowindow = new google.maps.InfoWindow({
+        content: marker.title
+      });
+      infowindow.open(map, marker);
+    }
+
+    markers.forEach(function(marker, index) {
+      marker.addListener('click', function() {
+        openInfoWindow(index);
+      });
+    });
+  }
+</script>

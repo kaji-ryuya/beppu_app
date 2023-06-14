@@ -1,0 +1,107 @@
+<div class='container'>
+
+  <%= form_with(url: question_family_bath_place_post_path, method: :post, local: true) do |f| %>
+    <div class='row'>
+      <div class='col-lg-9'>
+        <h2 class='mt-5'>行きたい場所を一つ選んで「次へ」を押してください。</h2>
+      </div>
+      <div class='col-lg-3 text-end d-flex align-items-end'>
+        <%= f.submit '次へ', class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+    <p>選択状態で選択肢が濃くなります。<br />
+    下に各温泉地の説明を簡単に紹介しています。</p>
+    <div class='row'>
+      <% if @places.include?('beppu') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :beppu, id: 'beppu', class: 'furo-choice-btn' %>
+          <label for='beppu' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>別府温泉</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('hamawaki') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :hamawaki, id: 'hamawaki', class: 'furo-choice-btn' %>
+          <label for='hamawaki' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>浜脇</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('kamegawa') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :kamegawa, id: 'kamegawa', class: 'furo-choice-btn' %>
+          <label for='kamegawa' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>亀川</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('kannawa') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :kannawa, id: 'kannawa', class: 'furo-choice-btn' %>
+          <label for='kannawa' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>鉄輪</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('kankaiji') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :kankaiji, id: 'kankaiji', class: 'furo-choice-btn' %>
+          <label for='kankaiji' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>観海寺</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('horita') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :horita, id: 'horita', class: 'furo-choice-btn' %>
+          <label for='horita' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>堀田</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('sibaseki') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :sibaseki, id: 'sibaseki', class: 'furo-choice-btn' %>
+          <label for='sibaseki' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>柴石</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('myoban') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :myoban, id: 'myoban', class: 'furo-choice-btn' %>
+          <label for='myoban' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>明礬</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @places.include?('other') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :place, :other, id: 'other', class: 'furo-choice-btn' %>
+          <label for='other' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>その他の地区</p>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= render 'shared/place_explanation' %>
+</div>

@@ -1,5 +1,5 @@
 .top-wrapper {
-  background-image: url('onsen_top.jpg');
+  background-image: url('onsen_top2.jpeg');
   background-size: cover;
   height: 800px;
   position: relative;
@@ -59,4 +59,15 @@
 
 .header {
   background-color: #13154b;
+
+h2 {
+  color: #fdf7ee;
+}
+}
+
+.footer {
+  background-color: #13154b;
+  p {
+    color: white;
+  }
 }

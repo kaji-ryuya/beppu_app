@@ -1,19 +1,19 @@
 <header>
   <div class='header'>
+    <div class='container'>
     <nav class='navbar navbar-expand-lg navigation navbar-dark'>
 
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'logo.png', size: "50x50"%>
+        <h2>気分で決める別府温泉</h2>
       <% end %>
-      <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent'
-        aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class='navbar-toggler-icon'></span>
       </button>
 
-      <div class='collapse navbar-collapse justify-content-end' id='navbarSupportedContent'>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class='navbar-nav ml-auto main-nav align-items-center me-4'>
             <li class='nav-item'>
-              <%= link_to '質問から探す', '#', class: 'nav-link' %>
+              <%= link_to '質問から探す', question_path, class: 'nav-link' %>
             </li>
             <li class='nav-item'>
               <%= link_to 'リストから探す', spas_path, class: 'nav-link' %>
@@ -24,5 +24,6 @@
         </ul>
       </div>
     </nav>
+    </div>
   </div>
 </header>

@@ -1,2 +1,29 @@
 ja:
-  
+  spring_quality:
+    simple: '単純温泉'
+    chloride: '塩化物泉'
+    bicarbonate: '炭酸水素塩泉'
+    sulfur: '硫黄泉'
+    sulfate: '硫酸塩泉'
+    acid: '酸性泉'
+    iron_containing: '含鉄泉'
+  place:
+    beppu: '別府'
+    hamawaki: '浜脇'
+    kamegawa: '亀川'
+    kannawa: '鉄輪'
+    kankaiji: '観海寺'
+    horita: '堀田'
+    sibaseki: '柴石'
+    myoban: '明礬'
+  location:
+    in_town: '街中'
+    ocean_view: 'オーシャンビュー'
+    in_nature: '緑の中'
+  charactor:
+    outdoor_bath: '露天風呂'
+    sauna: 'サウナ'
+    unique_bath: '砂風呂や蒸し湯など特徴的な風呂'
+    main_bath: '大浴場'
+    local_spa: 'ジモ泉（地元に根付いた温泉）'
+    family_bath: '貸切湯'
