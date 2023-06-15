@@ -1,0 +1,72 @@
+<div class='container'>
+
+  <div id="map" style="height: 600px; width: 100%;" class="text-center"></div>
+
+</div>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
+</script>
+<script>
+  var marker = [];
+  var infoWindow = [];
+  var activeWindow;
+  function initMap() {
+    var boundary = {
+      north: 33.35152, // 北側の緯度
+      south: 33.26045, // 南側の緯度
+      east: 131.51290, // 東側の経度
+      west: 131.41873  // 西側の経度
+    };
+
+    var markerData = [
+    <% @spas.each do |spa| %>
+      {
+        lat: <%= spa.lat %>,
+        lng: <%= spa.lng %>,
+        place_id: '<%= spa.place_id %>',
+        photo_no: '<%= spa.photo_no %>',
+        content: ``
+      },
+    <% end %>
+  ];
+
+  var zoom = 12; // 適切なズームレベルの値を指定してください
+
+  var latlng = new google.maps.LatLng(markerData[0]['lat'], markerData[0]['lng']);
+
+  // 地図の作成
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: zoom,
+    center: latlng
+  });
+
+  for (var i = 0; i < markerData.length; i++) {
+    var markerLatLng = new google.maps.LatLng({
+      lat: markerData[i]['lat'],
+      lng: markerData[i]['lng']
+    });
+    marker[i] = new google.maps.Marker({
+      position: markerLatLng,
+      map: map,
+    });
+
+    infoWindow[i] = new google.maps.InfoWindow({
+      content: markerData[i]['content']
+    });
+    markerEvent(i);
+  }
+
+  // マーカーにクリックイベントを追加
+  function markerEvent(i) {
+    marker[i].addListener('click', function() {
+      if (activeWindow !== undefined) {
+        activeWindow.close();
+      }
+      activeWindow = infoWindow[i];
+      infoWindow[i].open(map, marker[i]);
+    });
+  }
+}
+
+</script>

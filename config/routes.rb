@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get 'answer'
   end
 
+  get 'map', to: 'maps#map'
+
   root 'static_pages#top'
 
   resources :spas
