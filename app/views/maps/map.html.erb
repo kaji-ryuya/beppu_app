@@ -9,8 +9,8 @@
 </script>
 <script>
   var marker = [];
-  var infoWindow = [];
-  var activeWindow;
+  var infoWindow = null;
+  var activeWindow = null;
   function initMap() {
     var boundary = {
       north: 33.35152, // 北側の緯度
@@ -19,54 +19,46 @@
       west: 131.41873  // 西側の経度
     };
 
-    var markerData = [
-    <% @spas.each do |spa| %>
-      {
-        lat: <%= spa.lat %>,
-        lng: <%= spa.lng %>,
-        place_id: '<%= spa.place_id %>',
-        photo_no: '<%= spa.photo_no %>',
-        content: ``
-      },
-    <% end %>
-  ];
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: { lat: 33.30777, lng: 131.47248 }
+      });
 
-  var zoom = 12; // 適切なズームレベルの値を指定してください
+      var markers = [];
 
-  var latlng = new google.maps.LatLng(markerData[0]['lat'], markerData[0]['lng']);
+      <% @spas.each do |spa| %>
+        var marker_<%= spa.id %> = new google.maps.Marker({
+          position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
+          map: map,
+          title: `<%= spa.name %><br />
+          <%= spa.address %>,`
+          
+        });
 
-  // 地図の作成
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: zoom,
-    center: latlng
-  });
+        markers.push(marker_<%= spa.id %>);
 
-  for (var i = 0; i < markerData.length; i++) {
-    var markerLatLng = new google.maps.LatLng({
-      lat: markerData[i]['lat'],
-      lng: markerData[i]['lng']
-    });
-    marker[i] = new google.maps.Marker({
-      position: markerLatLng,
-      map: map,
-    });
+        const request_<%= spa.id %> = {
+          placeId: '<%= spa.place_id %>',
+          fields: ['photos']
+        };
 
-    infoWindow[i] = new google.maps.InfoWindow({
-      content: markerData[i]['content']
-    });
-    markerEvent(i);
-  }
+        marker_<%= spa.id %>.addListener('click', function() {
+          var infowindow = new google.maps.InfoWindow();
+          const request = {
+            placeId: '<%= spa.place_id %>',
+            fields: ['photos']
+          };
 
-  // マーカーにクリックイベントを追加
-  function markerEvent(i) {
-    marker[i].addListener('click', function() {
-      if (activeWindow !== undefined) {
-        activeWindow.close();
-      }
-      activeWindow = infoWindow[i];
-      infoWindow[i].open(map, marker[i]);
-    });
-  }
-}
+          const service = new google.maps.places.PlacesService(map);
+          service.getDetails(request, function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+              var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 150, maxWidth: 220 });
+              infowindow.setContent(`<div><img src="${photoUrl}" alt="施設写真" class="card-img-top" ><strong><%= spa.name %></strong><br /><%= spa.address %><br /></div>`);
+              infowindow.open(map, marker_<%= spa.id %>);
+            }
+          });
+        });
+      <% end %>
+    }
 
 </script>
