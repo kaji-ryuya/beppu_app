@@ -1,6 +1,10 @@
+<% content_for(:title, t('maps.title')) %>
 <div class='container'>
   <h1>温泉map一覧</h1>
   <%= render 'shared/search_form', url: map_path %>
+  <% if @spas.blank? %>
+    <p>対象の温泉が見つかりません。検索項目を減らしてみてください。</p>
+  <% end %>
 
   <div id="map" style="height: 600px; width: 100%;" class="text-center mt-5 mb-5"></div>
 
