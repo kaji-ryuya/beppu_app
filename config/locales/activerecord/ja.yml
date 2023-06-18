@@ -39,6 +39,7 @@ ja:
         horita: '堀田'
         sibaseki: '柴石'
         myoban: '明礬'
+        other: 'その他の地区'
       location:
         in_town: '街中'
         ocean_view: 'オーシャンビュー'
