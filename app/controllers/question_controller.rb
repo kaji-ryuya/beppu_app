@@ -6,4 +6,6 @@ class QuestionController < ApplicationController
     session.delete(:place) if session[:place].present?
     session.delete(:location) if session[:location].present?
   end
+
+  def choice; end
 end

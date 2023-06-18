@@ -1,0 +1,90 @@
+<div class='container'>
+  
+  <%= form_with(url: question_charactor_spa_quality_post_path, method: :post, local: true) do |f| %>
+    <div class='row'>
+      <div class='col-lg-9'>
+        <h2 class='mt-5'>好きな泉質を一つ選んで「次へ」を押してください。</h2>
+      </div>
+      <div class='col-lg-3 text-end d-flex align-items-end'>
+        <%= f.submit '次へ', class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+    <p>選択状態で選択肢が濃くなります。<br />
+    下部に各泉質の特徴、主な効能（一部）を簡単に紹介しています。</p>
+
+    <div class='row'>
+      <% if @spring_qualities.include?('simple') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :simple, id: 'simple', class: 'furo-choice-btn' %>
+          <label for='simple' class='furo-choice-img'>
+            <%= image_tag 'furo_oke.png', :size => '225x225' %>
+            <p class='no-wrap'>単純温泉</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @spring_qualities.include?('chloride') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :chloride, id: 'chloride', class: 'furo-choice-btn' %>
+          <label for='chloride' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>塩化物泉</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @spring_qualities.include?('bicarbonate') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :bicarbonate, id: 'bicarbonate', class: 'furo-choice-btn' %>
+          <label for='bicarbonate' class='furo-choice-img'>
+            <%= image_tag 'furo_oke.png', :size => '225x225' %>
+            <p class='no-wrap' style="font-size: 32px;">炭酸水素塩泉</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @spring_qualities.include?('sulfur') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :sulfur, id: 'sulfur', class: 'furo-choice-btn' %>
+          <label for='sulfur' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>硫黄泉</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @spring_qualities.include?('sulfate') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :sulfate, id: 'sulfate', class: 'furo-choice-btn' %>
+          <label for='sulfate' class='furo-choice-img'>
+            <%= image_tag 'furo_oke.png', :size => '225x225' %>
+            <p class='no-wrap'>硫酸塩泉</p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @spring_qualities.include?('acid') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :acid, id: 'acid', class: 'furo-choice-btn' %>
+          <label for='acid' class='furo-choice-img'>
+            <%= image_tag 'onsen.png', :size => '225x225' %>
+            <p class='no-wrap'>酸性泉</p></p>
+          </label>
+        </div>
+      <% end %>
+
+      <% if @spring_qualities.include?('iron_containing') %>
+        <div class='furo-choice col-lg-3'>
+          <%= f.radio_button :spring_quality, :iron_containing, id: 'iron_containing', class: 'furo-choice-btn' %>
+          <label for='iron_containing' class='furo-choice-img'>
+            <%= image_tag 'furo_oke.png', :size => '225x225' %>
+            <p class='no-wrap'>含鉄泉</p>
+          </label>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+  <%= render 'shared/spring_quality_explanation' %>
+</div>
+
