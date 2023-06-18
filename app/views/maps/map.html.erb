@@ -1,12 +1,11 @@
 <div class='container'>
+  <h1>温泉map一覧</h1>
+  <%= render 'shared/search_form', url: map_path %>
 
-  <div id="map" style="height: 600px; width: 100%;" class="text-center"></div>
+  <div id="map" style="height: 600px; width: 100%;" class="text-center mt-5 mb-5"></div>
 
 </div>
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
-</script>
 <script>
   var marker = [];
   var infoWindow = null;
@@ -53,7 +52,7 @@
           service.getDetails(request, function(place, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
               var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 150, maxWidth: 220 });
-              infowindow.setContent(`<div><img src="${photoUrl}" alt="施設写真" class="card-img-top" ><strong><%= spa.name %></strong><br /><%= spa.address %><br /></div>`);
+              infowindow.setContent(`<div><img src="${photoUrl}" alt="施設写真" class="border border-white rounded-3"><br /><strong><%= spa.name %></strong><br /><%= spa.address %><br /><%= link_to '詳細', spa_path(spa), class: 'btn btn-primary' %></div>`);
               infowindow.open(map, marker_<%= spa.id %>);
             }
           });
@@ -61,4 +60,7 @@
       <% end %>
     }
 
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
 </script>

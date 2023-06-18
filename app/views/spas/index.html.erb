@@ -13,9 +13,6 @@
 
 </div>
 <% if @spas.present? %>
-  <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
-  </script>
   <script>
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -63,6 +60,9 @@
         });
       });
     }
+  </script>
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
   </script>
 <% else %>
   <p>条件に合う温泉がありません。</p>

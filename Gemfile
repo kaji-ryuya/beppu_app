@@ -64,7 +64,6 @@ gem 'google_maps_api'
 gem 'kaminari'
 gem 'ransack'
 
-gem 'jquery-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

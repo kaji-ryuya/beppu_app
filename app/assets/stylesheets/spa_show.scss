@@ -1,18 +1,34 @@
+.spa-show {
 
-.spa-name {
-  font-family: 'Toppan Bunkyu Mincho';
+
+  .spa-name {
+    font-family: 'Toppan Bunkyu Mincho';
+  }
+
+
+
+  .spa-info {
+    margin-bottom: 30px
+    table {
+      width: 100%;
+      table-layout: fixed;
+      word-break: break-all;
+
+      
+      }
+    
+  }
+
+
+  .spa-photo {
+    margin-bottom: 30px
+  }
+
+  @media screen and (max-width: 960px) {
+    .spa-info {
+      width: 90%;
+    }
+
+  
+  }
 }
-
-
-.spa-info th {
-  width: 100px;
-}
-
-.spa-info {
-  margin-bottom: 30px
-}
-
-.spa-photo {
-  margin-bottom: 30px
-}
-
