@@ -8,8 +8,8 @@
 </div>
 <div class='row'>
     
-    <div class='spa-info col-sm-6'>
-      <table class='table table-striped'>
+    <div class='spa-info col-lg-6 mx-auto'>
+      <table class='table table-striped table-bordered'>
         <tr>
           <th><%= t(Spa.human_attribute_name(:spring_quality)) %></th>
           <td><%= spa.spring_quality_i18n %></td>
@@ -37,7 +37,7 @@
         <% if spa.spa_url.present? %>
           <tr>
             <th><%= t(Spa.human_attribute_name(:spa_url)) %></th>
-            <td><%= link_to spa.spa_url, spa.spa_url %></td>
+            <td class='text-break'><%= link_to spa.spa_url, spa.spa_url %></td>
           </tr>
         <% end %>
         <% if spa.message.present? %>
@@ -54,56 +54,53 @@
         <% end %>
       </table>
     </div>
-    <div class='spa-photo col-sm'>
-      <div id="photo"></div>
+    <div class='spa-photo col-lg-6'>
+      <div id="photo" class='text-center'></div>
     </div>
 </div>
-    <!-- Google Mapsを表示するためのコンテナを作成 -->
-    <% if spa.lat.present? && spa.lng.present? %>
-      <div id="map" style="height: 600px; width: 100%;" class="text-center"></div>
-    <% end %>
+<!-- Google Mapsを表示するためのコンテナを作成 -->
+<div id="map" style="height: 600px; width: 100%;" class="text-center mb-5"></div>
     
-    <!-- Google Mapsを初期化し、マーカーを作成 -->
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
-    </script>
-    <script>
-      // 緯度と経度を取得
-      var lat = <%= spa.lat %>;
-      var lng = <%= spa.lng %>;
+<script>
+  // 緯度と経度を取得
+  var lat = <%= spa.lat %>;
+  var lng = <%= spa.lng %>;
 
-      // Google Mapsを初期化
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: lat, lng: lng},
-          zoom: 17
-        });
+  // Google Mapsを初期化
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: lat, lng: lng},
+      zoom: 17
+    });
 
-        // マーカーを作成します。
-        var marker = new google.maps.Marker({
-          position: {lat: lat, lng: lng},
-          map: map,
-          title: '<%= spa.name %>'
-        });
+    // マーカーを作成します。
+    var marker = new google.maps.Marker({
+      position: {lat: lat, lng: lng},
+      map: map,
+      title: '<%= spa.name %>'
+    });
 
-        // 施設写真の取得と表示
-        const placeService = new google.maps.places.PlacesService(map);
-        placeService.getDetails(
-          { placeId: "<%= spa.place_id %>" },
-          function (place, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              const photoUrl =
-                place.photos && place.photos.length > 0 ? place.photos[<%= spa.photo_no %>].getUrl() : "";
-              const photoElement = document.getElementById("photo");
-              if (photoUrl) {
-                photoElement.innerHTML = `<img src="${photoUrl}" width="520" alt="${place.name}">`;
-              } else {
-                photoElement.innerHTML = "No photo available";
-              }
-            } else {
-              console.error(`Place details request failed: ${status}`);
-            }
+    // 施設写真の取得と表示
+    const placeService = new google.maps.places.PlacesService(map);
+    placeService.getDetails(
+      { placeId: "<%= spa.place_id %>" },
+      function (place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const photoUrl =
+            place.photos && place.photos.length > 0 ? place.photos[<%= spa.photo_no %>].getUrl() : "";
+          const photoElement = document.getElementById("photo");
+          if (photoUrl) {
+            photoElement.innerHTML = `<img src="${photoUrl}" style="width: 90%; height: auto;” alt="${place.name}">`;
+          } else {
+            photoElement.innerHTML = "No photo available";
           }
-        );
+        } else {
+          console.error(`Place details request failed: ${status}`);
+        }
       }
-    </script>
+    );
+  }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
+</script>

@@ -1,6 +1,6 @@
 <% content_for(:title, t('question.title')) %>
 <div class='container'>
-  <%= form_with(url: question_family_bath_spa_quality_post_path, method: :post, local: true) do |f| %>
+  <%= form_with(url: question_charactor_spa_quality_post_path, method: :post, local: true) do |f| %>
     <div class='row'>
       <div class='col-lg-9'>
         <h2 class='mt-5'>好きな泉質を一つ選んで「次へ」を押してください。</h2>
@@ -83,6 +83,8 @@
         </div>
       <% end %>
     </div>
+
   <% end %>
   <%= render 'shared/spring_quality_explanation' %>
 </div>
+

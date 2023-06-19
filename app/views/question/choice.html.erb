@@ -1,0 +1,22 @@
+<% content_for(:title, t('question.title')) %>
+<div class='container'>
+  <div calss='text-center'>
+    <h2 class='mt-5'>次に「泉質」「サウナや露天風呂などの温泉の特徴」のどちらを重視しますか。</h2>
+    <div class='text-center'>
+      <div class='row'>
+        <div class='col'>
+          <%= link_to(question_spa_quality_spa_quality_path, class: 'link-dark') do %>
+            <%= image_tag 'umijigoku.png', :size => '300x300', class: 'question-img' %>
+            <p class='lead'>泉質</p>
+          <% end %>
+        </div>
+        <div class='col'>
+          <%= link_to(question_charactor_charactor_path, class: 'link-dark') do %>
+            <%= image_tag 'chinoikejigoku.png', :size => '300x300', class: 'question-img' %>
+            <p class='lead'>温泉の特徴</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

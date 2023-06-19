@@ -1,4 +1,8 @@
 ja:
+  question:
+    title: '質問から探す'
+  maps:
+    title: 'マップから探す'
   spring_quality:
     simple: '単純温泉'
     chloride: '塩化物泉'
@@ -16,6 +20,7 @@ ja:
     horita: '堀田'
     sibaseki: '柴石'
     myoban: '明礬'
+    other: 'その他の地区'
   location:
     in_town: '街中'
     ocean_view: 'オーシャンビュー'

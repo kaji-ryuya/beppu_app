@@ -1,3 +1,4 @@
+<% content_for(:title, t('question.title')) %>
 <div class='container'>
   <div class='row'>
     <div class='col'>
@@ -20,7 +21,7 @@
   </div>
   <div id="spas" class="row mt-2">
     <% @spas.each do |spa| %>
-      <div class="col-lg-4 col-md-6">
+      <div class="text-center col-lg-4 col-md-6">
         <%= render 'spas/spa_for_index', { spa: spa } %>
       </div>
     <% end %>
@@ -28,9 +29,6 @@
 
 </div>
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
-</script>
 <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -78,4 +76,7 @@
       });
     });
   }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
 </script>
