@@ -5,8 +5,9 @@
   <% if @spas.blank? %>
     <p>対象の温泉が見つかりません。検索項目を減らしてみてください。</p>
   <% end %>
+  <p>別府市内にいる場合、現在地が表示されます。</p>
 
-  <div id="map" style="height: 600px; width: 100%;" class="text-center mt-5 mb-5"></div>
+  <div id="map" style="height: 600px; width: 100%;" class="text-center mt-2 mb-5"></div>
 
 </div>
 
@@ -15,28 +16,36 @@
   var infoWindow = null;
   var activeWindow = null;
   function initMap() {
-    var boundary = {
-      north: 33.35152, // 北側の緯度
-      south: 33.26045, // 南側の緯度
-      east: 131.51290, // 東側の経度
-      west: 131.41873  // 西側の経度
-    };
-
-    var map = new google.maps.Map(document.getElementById('map'), {
+    function success(pos) {
+      var latitude = pos.coords.latitude;
+      var longitude = pos.coords.longitude;
+      var currentLatlng = new google.maps.LatLng(latitude, longitude);
+      var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: { lat: 33.30777, lng: 131.47248 }
       });
 
+      var marker = new google.maps.Marker({
+			position: currentLatlng, //マーカーの位置（必須）
+			map: map //マーカーを表示する地図
+		  });
+    
       var markers = [];
 
       <% @spas.each do |spa| %>
+
+        
         var marker_<%= spa.id %> = new google.maps.Marker({
           position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
           map: map,
           title: `<%= spa.name %><br />
-          <%= spa.address %>,`
-          
+          <%= spa.address %>,`,
+          icon: {
+            url: '<%= asset_path('icon/onsen_mark.png') %>',// お好みの画像までのパスを指定
+            scaledSize: new google.maps.Size(25, 25)
+          }
         });
+        
 
         markers.push(marker_<%= spa.id %>);
 
@@ -63,6 +72,55 @@
         });
       <% end %>
     }
+    function fail(error) {
+      alert('位置情報の取得に失敗しました。エラーコード：' + error.code);
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: { lat: 33.30777, lng: 131.47248 }
+      });
+
+       var markers = [];
+
+      <% @spas.each do |spa| %>
+        var marker_<%= spa.id %> = new google.maps.Marker({
+          position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
+          map: map,
+          title: `<%= spa.name %><br />
+          <%= spa.address %>,`,
+          icon: {
+            url: '<%= asset_path('icon/onsen_mark.png') %>',// お好みの画像までのパスを指定
+            scaledSize: new google.maps.Size(25, 25)
+          }
+        });
+        
+
+        markers.push(marker_<%= spa.id %>);
+
+        const request_<%= spa.id %> = {
+          placeId: '<%= spa.place_id %>',
+          fields: ['photos']
+        };
+
+        marker_<%= spa.id %>.addListener('click', function() {
+          var infowindow = new google.maps.InfoWindow();
+          const request = {
+            placeId: '<%= spa.place_id %>',
+            fields: ['photos']
+          };
+
+          const service = new google.maps.places.PlacesService(map);
+          service.getDetails(request, function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+              var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 150, maxWidth: 220 });
+              infowindow.setContent(`<div><img src="${photoUrl}" alt="施設写真" class="border border-white rounded-3"><br /><strong><%= spa.name %></strong><br /><%= spa.address %><br /><%= link_to '詳細', spa_path(spa), class: 'btn btn-primary' %></div>`);
+              infowindow.open(map, marker_<%= spa.id %>);
+            }
+          });
+        });
+      <% end %>
+    }
+    navigator.geolocation.getCurrentPosition(success, fail);
+  }
 
 </script>
 <script async defer
