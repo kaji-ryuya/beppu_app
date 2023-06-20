@@ -26,8 +26,6 @@ Rails.application.routes.draw do
       post 'charactor_post'
       get 'answer'
     end
-
-    get 'answer'
   end
 
   get 'map', to: 'maps#map'
