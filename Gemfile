@@ -102,4 +102,7 @@ group :development do
 
   # コード補完
   gem 'solargraph'
+
+  # herokuにデータの移行
+  gem 'seed_dump'
 end
