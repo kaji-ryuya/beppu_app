@@ -288,6 +288,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -377,6 +380,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   sassc-rails
+  seed_dump
   selenium-webdriver (= 4.9.0)
   solargraph
   sprockets-rails
