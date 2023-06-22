@@ -53,7 +53,7 @@
   .explanation {
     padding: 25px 10px 10px 10px;
     background-color: rgb(19, 21, 75, 0.8);
-    border-radius: 30px;
+    border-radius: 15px;
     font-size: 20px;
     font-family: 'Toppan Bunkyu Mincho';
     text-align: center;
@@ -81,7 +81,7 @@
 
   .btn-primary {
     border: none;
-    background: rgb(19, 21, 75);
+    background: #D5DEFF;
     border-radius: 77px;
     font-size: 50px;
     font-family: 'Toppan Bunkyu Mincho';
@@ -90,7 +90,7 @@
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #D5DEFF;
+    color: #071b66;
 
     @media screen and (max-width: 960px) {
       top: 70%;

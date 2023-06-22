@@ -7,6 +7,15 @@ FactoryBot.define do
     location { :in_town }
     charactor { :outdoor_bath }
 
+    trait :not_orthodox do
+      name { '全部違う泉' }
+      spring_quality { :sulfur }
+      place { :myoban }
+      have_family_bath { 'false' }
+      location { :ocean_view }
+      charactor { :main_bath }
+    end
+
     trait :chloride do
       name { 'chroride泉' }
       spring_quality { :chloride }
