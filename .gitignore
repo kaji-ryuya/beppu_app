@@ -35,3 +35,7 @@
 
 /node_modules
 /.env
+
+# heroku
+/app/assets/images/icon/beppu-app · Settings _ Heroku_files/*
+/app/assets/images/icon/beppu-app · Settings _ Heroku.html
