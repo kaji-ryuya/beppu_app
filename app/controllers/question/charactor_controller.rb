@@ -5,7 +5,7 @@ class Question::CharactorController < ApplicationController
   def charactor; end
 
   def charactor_post
-    if request.post? && params[:charactor].present?
+    if params[:charactor].present?
       session[:charactor] = params[:charactor]
       redirect_to question_charactor_spa_quality_path
     else
@@ -20,7 +20,7 @@ class Question::CharactorController < ApplicationController
   end
 
   def spa_quality_post
-    if request.post? && params[:spring_quality].present?
+    if params[:spring_quality].present?
       session[:spring_quality] = params[:spring_quality]
       redirect_to question_charactor_answer_path
     else

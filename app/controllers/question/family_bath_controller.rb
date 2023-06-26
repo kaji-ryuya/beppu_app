@@ -23,7 +23,7 @@ class Question::FamilyBathController < ApplicationController
   end
 
   def spa_quality_post
-    if request.post? && params[:spring_quality].present?
+    if params[:spring_quality].present?
       session[:spring_quality] = params[:spring_quality]
       redirect_to question_family_bath_answer_path
     else
@@ -36,7 +36,7 @@ class Question::FamilyBathController < ApplicationController
   end
 
   def place_post
-    if request.post? && params[:place].present?
+    if params[:place].present?
       session[:place] = params[:place]
       redirect_to question_family_bath_answer_path
     else
