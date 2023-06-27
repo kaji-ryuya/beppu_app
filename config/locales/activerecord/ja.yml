@@ -2,7 +2,13 @@ ja:
   activerecord:
     models:
       spa: '温泉'
+      user: 'ユーザー'
     attributes:
+      user:
+        name: 'ニックネーム'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
       spa:
         name: '温泉名'
         spring_quality: '泉質'
