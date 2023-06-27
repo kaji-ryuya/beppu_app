@@ -32,5 +32,10 @@ Rails.application.routes.draw do
 
   root 'static_pages#top'
 
-  resources :spas
+  resources :spas, only: %i[index show]
+
+  get 'login', to: 'user_session#new'
+  post 'login', to: 'user_session#create'
+  get 'logout', to: 'user_session#delete'
+  resources 'users', only: %i[new create]
 end
