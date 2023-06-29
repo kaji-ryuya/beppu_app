@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_spas, through: :bookmarks, source: :spa
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, uniqueness: true, presence: true
   

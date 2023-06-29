@@ -11,6 +11,10 @@ class SpasController < ApplicationController
   def show
   end
 
+  def bookmarks
+    @bookmark_spas = current_user.bookmark_spas
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_spa

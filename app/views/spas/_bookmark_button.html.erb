@@ -1,0 +1,5 @@
+<% if current_user.bookmark?(spa) %>
+  <%= render 'unbookmark', { spa: spa } %>
+<% else %>
+  <%= render 'bookmark', { spa: spa } %>
+<% end %>
