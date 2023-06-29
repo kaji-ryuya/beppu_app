@@ -65,6 +65,7 @@ gem 'kaminari'
 gem 'ransack'
 
 gem 'sorcery'
+gem 'letter_opener_web'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

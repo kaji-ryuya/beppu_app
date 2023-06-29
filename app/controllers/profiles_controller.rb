@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user
+  before_action :require_login
 
   def edit; end
 
@@ -11,8 +12,6 @@ class ProfilesController < ApplicationController
       render :edit
     end
   end
-
-  def show; end
 
   private
 
