@@ -5,6 +5,9 @@
   <div class="index-spa-photo photo text-center" id="photo-<%= spa.id %>"></div>
   <div class="card-body">
     <h5 class="card-title font-weight-bold"><%= spa.name %></h5>
+    <% if logged_in? %>
+      <%= render 'bookmark_button', spa: spa  %>
+    <% end %>
     <p>泉質: <%= spa.spring_quality_i18n %><br />
        住所: <%= spa.address %><br />
        定休日: <%= spa.holiday %></p>

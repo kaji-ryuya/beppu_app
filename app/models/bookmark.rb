@@ -4,16 +4,4 @@ class Bookmark < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :spa_id }
 
-
-  def bookmark(spa)
-    bookmark_spas << spa
-  end
-
-  def unbookmark(spa)
-    bookmark_spas.destroy(spa)
-  end
-
-  def bookmark?(spa)
-    bookmark_spas.include?(spa)
-  end
 end

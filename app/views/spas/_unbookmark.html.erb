@@ -1,3 +1,1 @@
-<%= link_to bookmark_path(current_user.bookmarks.find_by(spa_id: spa.id)), id: "js-bookmark-button-for-spa-#{spa.id}", class:"float-right", method: :delete do %>
-  <%= icon 'fas', 'star' %>
-<% end %>
+<%= button_to 'お気に入りに追加済み', bookmark_path(current_user.bookmarks.find_by(spa_id: spa.id)), id: "js-bookmark-button-for-spa-#{spa.id}", class:"btn btn-bookmark", method: :delete %>
