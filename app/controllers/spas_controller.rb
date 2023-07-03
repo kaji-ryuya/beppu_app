@@ -12,7 +12,8 @@ class SpasController < ApplicationController
   end
 
   def bookmarks
-    @bookmark_spas = current_user.bookmark_spas
+    @q = current_user.bookmark_spas.ransack(params[:q])
+    @spas = @q.result(distinct: true)
   end
 
   private

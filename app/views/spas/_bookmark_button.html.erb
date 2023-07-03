@@ -1,8 +1,7 @@
-
-<turbo-frame id="bookmark-button">
-  <% if current_user.bookmark?(@spa) %>
-    <%= button_to 'お気に入り解除', bookmark_path(@spa), class: 'btn btn-bookmark', method: :delete, remote: true %>
+<turbo-frame id="bookmark-button-<%= spa.id %>">
+  <% if current_user.bookmark?(spa) %>
+    <%= button_to 'お気に入り解除', bookmark_path(spa), class: 'btn btn-bookmark', method: :delete, remote: true %>
   <% else %>
-    <%= button_to 'お気に入り追加', bookmarks_path(spa_id: @spa.id), class: 'btn btn-primary', method: :post, remote: true %>
+    <%= button_to 'お気に入り追加', bookmarks_path(spa_id: spa.id), class: 'btn btn-primary', method: :post, remote: true %>
   <% end %>
 </turbo-frame>

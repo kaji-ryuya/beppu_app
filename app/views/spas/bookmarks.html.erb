@@ -1,0 +1,70 @@
+<% content_for(:title, 'お気に入り') %>
+<div class='container'>
+  <h1>お気に入り一覧</h1>
+  <%= render 'shared/search_form', url: spas_path %>
+  <div id="spas" class="row">
+    <% @spas.each do |spa| %>
+      <div class="text-center col-lg-4 col-md-6">
+        <%= render 'spa_for_index', { spa: spa } %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= paginate @spas %>
+
+</div>
+<% if @spas.present? %>
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: { lat: <%= @spas.first.lat %>, lng: <%= @spas.first.lng %> }
+      });
+
+      var markers = [];
+
+      <% @spas.each do |spa| %>
+        var marker_<%= spa.id %> = new google.maps.Marker({
+          position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
+          map: map,
+          title: '<%= spa.name %>'
+        });
+
+        markers.push(marker_<%= spa.id %>);
+
+        const request_<%= spa.id %> = {
+          placeId: '<%= spa.place_id %>',
+          fields: ['photos']
+        };
+
+        const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
+        service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+            var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 237, maxWidth: 317 });
+            var photoElement = document.getElementById("photo-<%= spa.id %>");
+            photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
+          }
+        });
+      <% end %>
+
+      function openInfoWindow(index) {
+        var marker = markers[index];
+        var infowindow = new google.maps.InfoWindow({
+          content: marker.title
+        });
+        infowindow.open(map, marker);
+      }
+
+      markers.forEach(function(marker, index) {
+        marker.addListener('click', function() {
+          openInfoWindow(index);
+        });
+      });
+    }
+  </script>
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places&callback=initMap">
+  </script>
+<% else %>
+  <p>条件に合う温泉がありません。</p>
+<% end %>
