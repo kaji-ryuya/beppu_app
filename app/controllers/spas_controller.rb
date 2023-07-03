@@ -13,7 +13,7 @@ class SpasController < ApplicationController
 
   def bookmarks
     @q = current_user.bookmark_spas.ransack(params[:q])
-    @spas = @q.result(distinct: true)
+    @spas = @q.result(distinct: true).page(params[:page]).order(created_at: :asc)
   end
 
   private
