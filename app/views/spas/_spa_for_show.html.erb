@@ -1,9 +1,12 @@
 <div class='d-flex align-items-center row'>
-  <div class='spa-name col-sm-8'>
+  <div class='spa-name col-sm'>
     <h1><%= spa.name %></h1>
   </div>
-  <div class='col-sm'>
-    <!-- ブックマークと行ったボタン設置予定 -->
+  <div class='col-sm text-end'>
+    <!-- ブックマークボタン設置予定 -->
+    <% if logged_in? %>
+      <%= render 'bookmark_button', spa: spa  %>
+    <% end %>
   </div>
 </div>
 <div class='row'>

@@ -38,7 +38,13 @@ Rails.application.routes.draw do
 
   root 'static_pages#top'
 
-  resources :spas, only: %i[index show]
+  resources :spas, only: %i[index show] do
+    collection do
+      get :bookmarks
+    end
+  end
+
+  resources :bookmarks, only: %i[create destroy]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

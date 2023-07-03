@@ -1,4 +1,6 @@
 class Spa < ApplicationRecord
+  has_many :bookmarks, dependent: :destroy
+
   enum spring_quality: { simple: 0, chloride: 1, bicarbonate: 2, sulfur: 3, sulfate: 4, acid: 5, iron_containing: 6 }
   enum place: { beppu: 0, hamawaki: 1, kamegawa: 2, kannawa: 3, kankaiji: 4, horita: 5, sibaseki: 6, myoban: 7, other: 8 }
   enum location: { in_town: 0, ocean_view: 1, in_nature: 2 }
