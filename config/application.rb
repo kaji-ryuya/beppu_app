@@ -1,4 +1,3 @@
-require 'dotenv/rails-now'
 require_relative "boot"
 
 require "rails"
@@ -13,6 +12,7 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
+require 'dotenv/rails-now'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
