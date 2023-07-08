@@ -1,5 +1,6 @@
 class SpasController < ApplicationController
   before_action :set_spa, only: %i[ show ]
+  before_action :require_login, only: %i[bookmarks]
 
   # GET /spas or /spas.json
   def index
