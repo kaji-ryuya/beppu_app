@@ -25,7 +25,9 @@
               <%= current_user.name %>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><%= link_to 'お気に入り一覧', bookmarks_spas_path, class: 'dropdown-item' %></li>
+              <% if logged_in? %>
+                <li><%= link_to 'お気に入り一覧', bookmarks_spas_path, class: 'dropdown-item' %></li>
+              <% end %>
               <li><%= link_to 'プロフィール編集', edit_profile_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'ログアウト', logout_path, class: 'dropdown-item' %></li>
             </ul>

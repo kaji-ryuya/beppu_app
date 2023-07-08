@@ -57,7 +57,7 @@ gem 'annotate'
 gem 'rails-i18n'
 gem 'enum_help'
 
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'google_places'
 gem 'google_maps_api'
 
