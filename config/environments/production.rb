@@ -63,8 +63,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "beppu_app_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: "www.beppu-app.com" }
-  config.action_mailer.default_url_options = { host: "beppu-app-cbf317b43ce0.herokuapp.com" }
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
