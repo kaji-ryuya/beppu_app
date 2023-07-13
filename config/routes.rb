@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :spas
+
+      root to: "users#index"
+    end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
   get 'password_resets/new'

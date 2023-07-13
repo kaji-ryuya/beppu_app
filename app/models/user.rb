@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_spas, through: :bookmarks, source: :spa
 
+  enum role: { general: 0, admin: 1 }
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, uniqueness: true, presence: true
   
