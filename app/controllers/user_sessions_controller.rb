@@ -2,13 +2,16 @@ class UserSessionsController < ApplicationController
   def new; end
 
   def create
-    @user = login(params[:email], params[:password])
-    if @user
-      redirect_back_or_to root_path, success: 'ログインしました。'
-    else
-      flash.now[:danger] = 'メールアドレスもしくはパスワードが異なります。'
-      render :new
+    if login(params[:email], params[:password])
+      return redirect_back_or_to root_path, success: 'ログインしました。'
     end
+    user = User.find_by(email: params[:email])
+    flash.now[:danger] = if user && user.login_locked?
+                           'ご利用のアカウントはロックされています。時間をおいて再度ログインしてください。'
+                         else
+                           'ログインに失敗しました。'
+                         end
+    render :new
   end
 
   def destroy
