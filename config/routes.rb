@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :users
       resources :spas
+      resources :bookmarks
 
       root to: "users#index"
     end
