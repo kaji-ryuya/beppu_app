@@ -94,8 +94,8 @@ group :development do
   gem "web-console"
 
   # Lint check
-  gem "rubocop"
-  gem "rubocop-rails"
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
