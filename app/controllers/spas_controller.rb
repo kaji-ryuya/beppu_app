@@ -9,8 +9,7 @@ class SpasController < ApplicationController
   end
 
   # GET /spas/1 or /spas/1.json
-  def show
-  end
+  def show; end
 
   def bookmarks
     @q = current_user.bookmark_spas.ransack(params[:q])

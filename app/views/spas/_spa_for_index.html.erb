@@ -2,15 +2,19 @@
   <div id="map"></div>
   <div id="map-<%= spa.id %>"></div>
   <div class="index-spa-photo photo text-center" id="photo-<%= spa.id %>"></div>
-  <div class="card-body">
+  <div class="card-body d-flex flex-column">
     <h5 class="card-title font-weight-bold"><%= spa.name %></h5>
-    <% if logged_in? %>
-      <%= render 'bookmark_button', spa: spa  %>
-    <% end %>
     <p>泉質: <%= spa.spring_quality_i18n %><br />
        住所: <%= spa.address %><br />
        定休日: <%= spa.holiday %></p>
-    <%= link_to '温泉詳細', spa_path(spa), class: 'btn btn-primary' %>
+    <div class='mt-auto'>
+      <div class='d-flex flex-row justify-content-center'>
+        <%= link_to '温泉詳細', spa_path(spa), class: 'btn btn-primary' %>
+        <% if logged_in? %>
+          <%= render 'bookmark_button', spa: spa %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
