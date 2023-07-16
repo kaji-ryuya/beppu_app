@@ -9,6 +9,10 @@
     <% end %>
   </div>
 </div>
+<div class="text-start mb-3 rating-width">
+  <div id="rating" class="text-center"></div>
+  <div id="rating-photo" class="text-center"></div>
+</div>
 <div class='row'>
     
     <div class='spa-info col-lg-6 mx-auto'>
@@ -93,10 +97,35 @@
             place.photos && place.photos.length > 0 ? place.photos[<%= spa.photo_no %>].getUrl() : "";
           const photoElement = document.getElementById("photo");
           if (photoUrl) {
-            photoElement.innerHTML = `<img src="${photoUrl}" style="width: 90%; height: auto;” alt="${place.name}">`;
+            photoElement.innerHTML = `<img src="${photoUrl}" style="width: 90%; height: auto;" alt="${place.name}">`;
           } else {
             photoElement.innerHTML = "No photo available";
           }
+
+          const ratingElement = document.getElementById("rating");
+          const ratingPhotoElement = document.getElementById("rating-photo")
+          let ratingPhoto = "";
+          if (place.rating > 4.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/5star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 4.0) {
+            ratingPhoto = '<img src="<%= asset_path("rate/45star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 3.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/4star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 3.0) {
+            ratingPhoto = '<img src="<%= asset_path("rate/35star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 2.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/3star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 2.0) {
+            ratingPhoto = '<img src="<%= asset_path("rate/25star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 1.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/2star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 1) {
+            ratingPhoto = '<img src="<%= asset_path("rate/15star.png") %>" style="width: 125px; height: auto;">';
+          } else {
+            ratingPhoto = '<img src="<%= asset_path("rate/1star.png") %>" style="width: 125px; height: auto;">';
+          }
+          ratingElement.innerHTML = `GoogleMap評価: ${place.rating} `;
+          ratingPhotoElement.innerHTML = ratingPhoto
         } else {
           console.error(`Place details request failed: ${status}`);
         }
