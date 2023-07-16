@@ -4,7 +4,7 @@
   <%= render 'shared/search_form', url: spas_path %>
   <div id="spas" class="row">
     <% @spas.each do |spa| %>
-      <div class="text-center col-lg-4 col-md-6">
+      <div class="text-center col-lg-4 col-md-6 spa-index">
         <%= render 'spa_for_index', { spa: spa } %>
       </div>
     <% end %>
@@ -21,45 +21,46 @@
         center: { lat: <%= @spas.first.lat %>, lng: <%= @spas.first.lng %> }
       });
 
-      var markers = [];
-
       <% @spas.each do |spa| %>
-        var marker_<%= spa.id %> = new google.maps.Marker({
-          position: { lat: <%= spa.lat %>, lng: <%= spa.lng %> },
-          map: map,
-          title: '<%= spa.name %>'
-        });
-
-        markers.push(marker_<%= spa.id %>);
-
-        const request_<%= spa.id %> = {
-          placeId: '<%= spa.place_id %>',
-          fields: ['photos']
-        };
-
         const service_<%= spa.id %> = new google.maps.places.PlacesService(map);
-        service_<%= spa.id %>.getDetails(request_<%= spa.id %>, function(place, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
-            var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 237, maxWidth: 317 });
-            var photoElement = document.getElementById("photo-<%= spa.id %>");
-            photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
+        service_<%= spa.id %>.getDetails(
+          { placeId: "<%= spa.place_id %>" },
+          function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK && place.photos) {
+              var photoUrl = place.photos[<%= spa.photo_no %>].getUrl({ maxHeight: 237, maxWidth: 317 });
+              var photoElement = document.getElementById("photo-<%= spa.id %>");
+              photoElement.innerHTML = `<img src="${photoUrl}" alt="施設写真" class="card-img-top">`;
+
+              var ratingElement = document.getElementById("rating-<%= spa.id %>");
+              var ratingPhotoElement = document.getElementById("rating-photo-<%= spa.id %>")
+              let ratingPhoto = "";
+              if (place.rating > 4.5) {
+                ratingPhoto = '<img src="<%= asset_path("rate/5star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 4.0) {
+                ratingPhoto = '<img src="<%= asset_path("rate/45star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 3.5) {
+                ratingPhoto = '<img src="<%= asset_path("rate/4star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 3.0) {
+                ratingPhoto = '<img src="<%= asset_path("rate/35star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 2.5) {
+                ratingPhoto = '<img src="<%= asset_path("rate/3star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 2.0) {
+                ratingPhoto = '<img src="<%= asset_path("rate/25star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 1.5) {
+                ratingPhoto = '<img src="<%= asset_path("rate/2star.png") %>" style="width: 125px; height: auto;">';
+              } else if (place.rating > 1) {
+                ratingPhoto = '<img src="<%= asset_path("rate/15star.png") %>" style="width: 125px; height: auto;">';
+              } else {
+                ratingPhoto = '<img src="<%= asset_path("rate/1star.png") %>" style="width: 125px; height: auto;">';
+              }
+              ratingElement.innerHTML = `GoogleMap評価: ${place.rating} `;
+              ratingPhotoElement.innerHTML = ratingPhoto
+            } else {
+              console.error(`Place details request failed: ${status}`);
+            }
           }
-        });
+        );
       <% end %>
-
-      function openInfoWindow(index) {
-        var marker = markers[index];
-        var infowindow = new google.maps.InfoWindow({
-          content: marker.title
-        });
-        infowindow.open(map, marker);
-      }
-
-      markers.forEach(function(marker, index) {
-        marker.addListener('click', function() {
-          openInfoWindow(index);
-        });
-      });
     }
   </script>
   <script async defer

@@ -1,10 +1,11 @@
 <div class="card" style="width: 20rem;">
   <div id="map"></div>
-  <div id="map-<%= spa.id %>"></div>
   <div class="index-spa-photo photo text-center" id="photo-<%= spa.id %>"></div>
   <div class="card-body d-flex flex-column">
     <h5 class="card-title font-weight-bold"><%= spa.name %></h5>
-    <p>泉質: <%= spa.spring_quality_i18n %><br />
+    <div id="rating-<%= spa.id %>" class="text-center"></div>
+    <div id="rating-photo-<%= spa.id %>" class="text-center"></div>
+    <p class="card-text">泉質: <%= spa.spring_quality_i18n %><br />
        住所: <%= spa.address %><br />
        定休日: <%= spa.holiday %></p>
     <div class='mt-auto'>

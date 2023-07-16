@@ -11,7 +11,7 @@
 </div>
 <div class="text-start mb-3 rating-width">
   <div id="rating" class="text-center"></div>
-  <div id="rating_photo" class="text-center"></div>
+  <div id="rating-photo" class="text-center"></div>
 </div>
 <div class='row'>
     
@@ -103,26 +103,26 @@
           }
 
           const ratingElement = document.getElementById("rating");
-          const ratingPhotoElement = document.getElementById("rating_photo")
+          const ratingPhotoElement = document.getElementById("rating-photo")
           let ratingPhoto = "";
-          if (place.rating >= 4.5) {
+          if (place.rating > 4.5) {
             ratingPhoto = '<img src="<%= asset_path("rate/5star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 4.0) {
+          } else if (place.rating > 4.0) {
             ratingPhoto = '<img src="<%= asset_path("rate/45star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 3.5) {
-            ratingPhoto = '<img src="<%= asset_path("rate/40star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 3.0) {
+          } else if (place.rating > 3.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/4star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 3.0) {
             ratingPhoto = '<img src="<%= asset_path("rate/35star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 2.5) {
-            ratingPhoto = '<img src="<%= asset_path("rate/30star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 2.0) {
+          } else if (place.rating > 2.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/3star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 2.0) {
             ratingPhoto = '<img src="<%= asset_path("rate/25star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 1.5) {
-            ratingPhoto = '<img src="<%= asset_path("rate/20star.png") %>" style="width: 125px; height: auto;">';
-          } else if (place.rating >= 1) {
+          } else if (place.rating > 1.5) {
+            ratingPhoto = '<img src="<%= asset_path("rate/2star.png") %>" style="width: 125px; height: auto;">';
+          } else if (place.rating > 1) {
             ratingPhoto = '<img src="<%= asset_path("rate/15star.png") %>" style="width: 125px; height: auto;">';
           } else {
-            ratingPhoto = '<img src="<%= asset_path("rate/10star.png") %>" style="width: 125px; height: auto;">';
+            ratingPhoto = '<img src="<%= asset_path("rate/1star.png") %>" style="width: 125px; height: auto;">';
           }
           ratingElement.innerHTML = `GoogleMap評価: ${place.rating} `;
           ratingPhotoElement.innerHTML = ratingPhoto
