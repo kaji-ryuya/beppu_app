@@ -41,11 +41,38 @@ h2 {
   margin: 30px;
 }
 
+.furo-img {
+  height: 225px;
+  width: 225px;
+}
+
+@media (max-width: 767px) {
+  .furo-choice {
+    position: relative;
+    height: 113px;
+    width: 113px;
+    margin: 30px;
+  }
+
+  .furo-img {
+    height: 113px;
+    width: 113px;
+  }
+
+  .furo-choice-img p{
+    font-size: 25px;
+  }
+
+  .no-wrap {
+    font-size: 25px;
+  }
+}
+
 .furo-choice-btn {
   display: none;
 }
 
-.furo-choice-img{
+.furo-choice-img {
   position: absolute;
   opacity: 0.75;
 }
@@ -69,12 +96,18 @@ h2 {
 }
 
 .no-wrap {
-  font-size:40px;
+  font-size:32px;
   white-space: nowrap;
 }
 
+@media screen and (min-width: 961px) {
+  .charactor-choice {
+    margin: 30px 60px 30px 0px;
+  }
+}
+
 .charactor-choice {
-  margin: 30px;
+  margin: 30px 0px 30px 0px;
 }
 
 .charactor-choice p{
@@ -86,10 +119,31 @@ h2 {
 
 .charactor-img {
   border-radius: 10px;
+  width: 300px;
+  height: 200px;
+}
+
+@media (max-width: 767px) {
+  .charactor-img {
+    width: 150px; /* 幅を150pxに指定 */
+    height: 100px; /* 高さは自動調整 */
+  }
+
+  .charactor-choice {
+    width: 165px;
+    height: auto;
+    margin: 20px 15px 10px 0px;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .location-choice {
+    margin: 30px 60px 30px 0px;
+  }
 }
 
 .location-choice {
-  margin: 30px 60px 30px 0px;
+  margin: 30px 0px 30px 0px;
 }
 
 .location-choice p{
@@ -101,6 +155,21 @@ h2 {
 
 .location-img {
   border-radius: 10px;
+  width: 300px;
+  height: 200px;
+}
+
+@media (max-width: 767px) {
+  .location-img {
+    width: 150px; /* 幅を150pxに指定 */
+    height: 100px; /* 高さは自動調整 */
+  }
+
+  .location-choice {
+    width: 165px;
+    height: auto;
+    margin: 20px 15px 10px 0px;
+  }
 }
 
 .question-img {
