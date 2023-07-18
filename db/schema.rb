@@ -48,8 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_184755) do
     t.float "lng"
     t.string "place_id"
     t.integer "photo_no"
-    t.time "opening_time"
-    t.time "closing_time"
+    t.float "opening_time"
+    t.float "closing_time"
     t.index ["name"], name: "index_spas_on_name", unique: true
   end
 

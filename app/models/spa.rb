@@ -17,6 +17,6 @@ class Spa < ApplicationRecord
 
   # ransack検索
   def self.ransackable_attributes(auth_object = nil)
-    ["charactor", "have_family_bath", "is_child_bathing", "location", "name", "place", "spring_quality"]
+    super + %w[charactor have_family_bath is_child_bathing location name place spring_quality opening_time closing_time]
   end
 end
