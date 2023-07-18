@@ -5,7 +5,9 @@ class SpasController < ApplicationController
   # GET /spas or /spas.json
   def index
     @q = Spa.ransack(params[:q])
-    @spas = @q.result(distinct: true).page(params[:page]).order(id: :asc)
+    spa_times_search = @q.result.ransack(closing_time_gteq: @q.opening_time_lteq)
+
+    @spas = spa_times_search.result(distinct: true).page(params[:page]).order(id: :asc)
   end
 
   # GET /spas/1 or /spas/1.json
@@ -13,7 +15,9 @@ class SpasController < ApplicationController
 
   def bookmarks
     @q = current_user.bookmark_spas.ransack(params[:q])
-    @spas = @q.result(distinct: true).page(params[:page]).order(created_at: :asc)
+    spa_times_search = @q.result.ransack(closing_time_gteq: @q.opening_time_lteq)
+
+    @spas = spa_times_search.result(distinct: true).page(params[:page]).order(id: :asc)
   end
 
   private
