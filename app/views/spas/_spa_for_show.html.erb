@@ -81,11 +81,7 @@
     });
 
     // マーカーを作成します。
-    var marker = new google.maps.Marker({
-      position: {lat: lat, lng: lng},
-      map: map,
-      title: '<%= spa.name %>'
-    });
+   
 
     // 施設写真の取得と表示
     const placeService = new google.maps.places.PlacesService(map);
@@ -93,6 +89,11 @@
       { placeId: "<%= spa.place_id %>" },
       function (place, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
+          var marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map,
+            title: '<%= spa.name %>'
+          });
           const photoUrl =
             place.photos && place.photos.length > 0 ? place.photos[<%= spa.photo_no %>].getUrl() : "";
           const photoElement = document.getElementById("photo");
