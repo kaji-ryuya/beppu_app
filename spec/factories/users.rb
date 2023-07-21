@@ -6,7 +6,9 @@ FactoryBot.define do
     password_confirmation { "password" }
 
     trait :admin do
-      role { 1 }
+      sequence(:name) { |n| "admin_#{n}"}
+      sequence(:email) { |n| "admin_#{n}@example.com" }
+      role { :admin }
     end
   end
 end
