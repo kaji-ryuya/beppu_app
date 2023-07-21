@@ -39,7 +39,7 @@ RSpec.describe 'SpaBookmark', type: :system do
       expect(page).not_to have_content('お気に入り解除')
     end
 
-    fit 'お気に入り追加後にお気に入り一覧に追加される' do
+    it 'お気に入り追加後にお気に入り一覧に追加される' do
       click_button 'お気に入り追加'
       expect(page).to have_content('お気に入り解除')
       expect(page).not_to have_content('お気に入り追加')
