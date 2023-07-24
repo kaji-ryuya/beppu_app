@@ -59,7 +59,8 @@ FactoryBot.define do
       spring_quality { :chloride }
       place { :kannawa }
       have_family_bath { 'TRUE' }
-      location { :ocean_view }
+      location { :in_nature }
+      charactor { :outdoor_bath }
       lat { 33.3152 }
       lng { 131.46873 }
       place_id { "ChIJ5dWIg7unRjURf7_FKlIhTOw" }

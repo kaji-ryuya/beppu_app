@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'AdminRole', type: :system, focus: true do
+RSpec.describe 'AdminRole', type: :system do
   let!(:user) { create(:user)}
   let!(:admin) { create(:user, :admin) }
   let!(:spa) { create(:spa) }
