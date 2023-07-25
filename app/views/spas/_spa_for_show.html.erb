@@ -79,11 +79,7 @@
       center: {lat: lat, lng: lng},
       zoom: 17
     });
-
-    // マーカーを作成します。
-   
-
-    // 施設写真の取得と表示
+    
     const placeService = new google.maps.places.PlacesService(map);
     placeService.getDetails(
       { placeId: "<%= spa.place_id %>" },
