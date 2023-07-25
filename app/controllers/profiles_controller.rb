@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :set_user
   before_action :require_login
+  before_action :set_user
 
   def edit; end
 
@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, success: 'プロフィールを変更しました。'
     else
-      flash.now[danger] = 'プロフィールの変更に失敗しました。'
+      flash.now[:danger] = 'プロフィールの変更に失敗しました。'
       render :edit
     end
   end

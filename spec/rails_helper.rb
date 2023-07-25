@@ -64,4 +64,7 @@ RSpec.configure do |config|
 
   # FactoryBotの省略
   config.include FactoryBot::Syntax::Methods
+  config.include LoginMacros
+
+  Webdrivers::Chromedriver.required_version = '114.0.5735.90'
 end

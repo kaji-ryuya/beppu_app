@@ -1,46 +1,72 @@
 FactoryBot.define do
   factory :spa do
-    name { 'オーソドックス泉' }
+    name { '駅前高等温泉' }
     spring_quality { :simple }
     place { :beppu }
-    have_family_bath { 'TRUE' }
+    have_family_bath { 'FALSE' }
     location { :in_town }
-    charactor { :outdoor_bath }
+    charactor { :local_spa }
+    lat { 33.27906 }
+    lng { 131.50202 }
+    place_id { 'ChIJEc7DTd2mRjURSLsUPIKJXTU' }
+    photo_no { 0 }
+    opening_time { 8 }
+    closing_time { 23 }
 
-    trait :not_orthodox do
-      name { '全部違う泉' }
-      spring_quality { :sulfur }
-      place { :myoban }
-      have_family_bath { 'false' }
-      location { :ocean_view }
-      charactor { :main_bath }
-    end
-
+    # lat, lng, place_idは湯都ピアのもの
     trait :chloride do
-      name { 'chroride泉' }
+      name { '塩化物泉' }
       spring_quality { :chloride }
+      lat { 33.26984 }
+      lng { 131.50837 }
+      place_id { 'ChIJ__9v-samRjURcU6qOAW32Co' }
     end
 
     trait :hamawaki do
       name { '浜脇泉' }
       place { :hamawaki }
+      lat { 33.26984 }
+      lng { 131.50837 }
+      place_id { 'ChIJ__9v-samRjURcU6qOAW32Co' }
     end
 
-    trait :not_have_family_bath do
-      name { '貸切なし泉' }
-      have_family_bath { 'FALSE' }
+    trait :have_family_bath do
+      name { '貸切あり泉' }
+      have_family_bath { 'TRUE' }
+      lat { 33.26984 }
+      lng { 131.50837 }
+      place_id { 'ChIJ__9v-samRjURcU6qOAW32Co' }
     end
 
-    trait :furousen do
-      name { '不老泉' }
-      spring_quality { :simple }
-      place { :beppu }
-      have_family_bath { 'FALSE' }
-      location { :in_town }
-      lat { 33.27705 }
-      lng { 131.50045 }
-      place_id { "ChIJgcExzemmRjURU0FPa2A-9Co" }
-      photo_no { 6 }
+    trait :outdoor_bath do
+      name { '露天泉' }
+      charactor { :outdoor_bath }
+      lat { 33.26984 }
+      lng { 131.50837 }
+      place_id { 'ChIJ__9v-samRjURcU6qOAW32Co' }
+    end
+
+    trait :ocean_view do
+      name { 'オーシャンビュー泉' }
+      location { :ocean_view }
+      lat { 33.26984 }
+      lng { 131.50837 }
+      place_id { 'ChIJ__9v-samRjURcU6qOAW32Co' }
+    end
+
+    trait :oniishi do
+      name { '鬼石の湯' }
+      spring_quality { :chloride }
+      place { :kannawa }
+      have_family_bath { 'TRUE' }
+      location { :in_nature }
+      charactor { :outdoor_bath }
+      lat { 33.3152 }
+      lng { 131.46873 }
+      place_id { "ChIJ5dWIg7unRjURf7_FKlIhTOw" }
+      photo_no { 4 }
+      opening_time { 10 }
+      closing_time { 21 }
     end
   end
 end
