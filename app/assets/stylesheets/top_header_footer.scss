@@ -111,6 +111,22 @@
   .card {
     height: 240px;
   }
+
+  .link-underline {
+    text-decoration: none!important;
+  }
+
+  .top-place-link {
+    color: #3C3736;
+  }
+
+  .top-place-name {
+    color: #3C3736;
+  }
+
+  .top-place-name:hover {
+    color: rgb(0, 153, 213);
+  }
 }
 
 .header {

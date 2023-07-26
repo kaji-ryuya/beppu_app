@@ -24,100 +24,116 @@
     それぞれ「別府・鉄輪・明礬・浜脇・堀田・観海寺・柴石・亀川」という温泉地に分かれています。</p>
     <div class='row'>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            別府温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '別府' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              別府温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">「別府八湯」の中心的な温泉地・別府温泉。名前は、地名から付けられたといわれています。<br />
+              JR別府駅から広がる温泉街で、アクセスも抜群。昭和レトロ漂う商店街やお店が立ち並び、美味しい料理や酒にもいただけます。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">「別府八湯」の中心的な温泉地・別府温泉。名前は、地名から付けられたといわれています。<br />
-            JR別府駅から広がる温泉街で、アクセスも抜群。昭和レトロ漂う商店街やお店が立ち並び、美味しい料理や酒にも舌鼓。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            浜脇温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '浜脇' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              浜脇温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">別府温泉と並ぶほど、人気のある温泉地・浜脇温泉。源泉が「浜」から湧き出ていることから、「浜わき」という地名がつきました。<br />
+              多くの公衆浴場があり、別府の歴史と地域の温かみを感じられます。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">別府温泉と並ぶほど、人気のある温泉地・浜脇温泉。源泉が「浜」から湧き出ていることから、「浜わき」という地名がつきました。<br />
-            多くの公衆浴場があり、別府の歴史と地域の温かみを感じられます。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            亀川温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '亀川' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              亀川温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">海岸沿いに源泉が湧いている亀川温泉。現在は休業中ですが、別府海浜砂湯が有名。<br />
+              住宅街や公園、はたまたお寺の中に温泉があったりと、魅力あふれる温泉が多いです。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">海岸沿いに源泉が湧いている亀川温泉。現在は休業中ですが、別府海浜砂湯が有名。<br />
-            住宅街や公園、はたまたお寺の中に温泉があったりと、魅力あふれる温泉が多いです。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            鉄輪温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '鉄輪' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              鉄輪温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">別府の象徴とも言えるあたりから立ち上る湯煙、鉄輪の地域のものが多いです。<br />
+              インスタ映えする街並みや、多くの有名な温泉が立ち並びます。別府名物「地獄蒸し」も体験できます。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">別府の象徴とも言えるあたりから立ち上る湯煙、鉄輪の地域のものが多いです。<br />
-            インスタ映えする街並みや、多くの有名な温泉が立ち並びます。別府名物「地獄蒸し」も体験できます。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            観海寺温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '観海寺' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              観海寺温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">別府八湯で一番見晴らしがよく、有名なホテルや旅館が多数あります。<br />
+              昔ながらの遊園地「ラクテンチ」もあり、お子さん連れで楽しめる地域です。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">別府八湯で一番見晴らしがよく、有名なホテルや旅館が多数あります。<br />
-            昔ながらの遊園地「ラクテンチ」もあり、お子さん連れで楽しめる地域です。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            堀田温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '堀田' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              堀田温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">別府ICが近く、アクセス良好。貸切湯の数も豊富です。<br />
+              堀田エリア唯一の市営温泉「堀田温泉」は市営温泉の中でも1位、2位を争うほど人気だとか。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">別府ICが近く、アクセス良好。貸切湯の数も豊富です。<br />
-            堀田エリア唯一の市営温泉「堀田温泉」は市営温泉の中でも1位、2位を争うほど人気だとか。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            柴石温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '柴石' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              柴石温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">醍醐天皇や後冷泉天皇が療養のため使われたともされている歴史長い温泉。<br />
+              地獄めぐりの「血の池地獄」と「龍巻き地獄」があり、観光と一緒に浸かりたい温泉です。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">醍醐天皇や後冷泉天皇が療養のため使われたともされている歴史長い温泉。<br />
-            地獄めぐりの「血の池地獄」と「龍巻き地獄」があり、観光と一緒に浸かりたい温泉です。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class='col-lg-4 col-md-6'>
-        <div class="card mb-3">
-          <div class="card-header fw-bold">
-            明礬温泉エリア
+        <%= link_to({ controller: "spas", action: "index", q: { place_eq: '明礬' } }, class: "link-underline") do %>
+          <div class="card mb-3">
+            <div class="card-header fw-bold top-place-name">
+              明礬温泉エリア
+            </div>
+            <div class="card-body">
+              <p class="card-text top-place-link">江戸時代から「美人の湯」として知られている明礬温泉。<br />
+              硫黄の香る街は、藁ぶきの「湯の花小屋」が立ち並び、別府に来た、そう感じると思います。
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">江戸時代から「美人の湯」として知られている明礬温泉。<br />
-            硫黄の香る街は、藁ぶきの「湯の花小屋」が立ち並び、別府に来た、そう感じると思います。
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
