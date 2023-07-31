@@ -58,7 +58,13 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   get 'logout', to: 'user_sessions#destroy'
-  resources 'users', only: %i[new create]
+  resources :users, only: %i[new create]
+  delete 'users/resign', to: 'users#destroy', as: :users_resign
+  get 'unsubscribe', to: 'users#unsubscribe'
+
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
+
+  get 'privacy_policy', to: 'terms#privacy_policy'
+  get 'terms_of_service', to: 'terms#terms_of_service'
 end

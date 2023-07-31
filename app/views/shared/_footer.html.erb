@@ -1,7 +1,12 @@
 <footer class='footer'>
   <div class='container'>
-    <div class='copyright text-center'>
-      <p>Copyright © 2023 - All right reserved by RYUYA KAJI</p>
+    <div class=' text-center pt-1'>
+      <%= link_to '利用規約', terms_of_service_path, class: 'link-light text-decoration-none me-2' %>
+      <%= link_to 'プライバシーポリシー', privacy_policy_path, class: 'link-light text-decoration-none me-2' %>
+      <%= link_to 'お問い合わせ', 'https://forms.gle/kjXyHiVT5xjQ7jQX7', class: 'link-light text-decoration-none' %>
+    </div>
+    <div class='pb-1 mt-1 copyright text-center'>
+      <p>Copyright © 2023 気分で決める別府温泉 - All rights reserved.</p>
     </div>
   </div>
 </footer>
