@@ -114,5 +114,18 @@ RSpec.describe 'Users', type: :system do
         end
       end
     end
+
+    describe 'ユーザーの退会' do
+      fit 'ユーザーの退会が成功する' do
+        visit unsubscribe_path
+        accept_confirm('本当に退会しますか？') do
+          click_link '退会する'
+        end
+        
+        expect(page).to have_content('ユーザーを削除しました。')
+        expect(current_path).to eq root_path
+      end
+
+    end
   end
 end
