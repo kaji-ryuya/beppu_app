@@ -88,8 +88,7 @@
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           var marker = new google.maps.Marker({
             position: place.geometry.location,
-            map: map,
-            title: '<%= spa.name %>'
+            map: map
           });
           marker.addListener('click', function() {
             // クリックすると遷移する
