@@ -65,6 +65,7 @@
       <div id="photo" class='text-center'></div>
     </div>
 </div>
+<p>マーカーをクリックするとマップが開きます。</p>
 <!-- Google Mapsを表示するためのコンテナを作成 -->
 <div id="map" style="height: 600px; width: 100%;" class="text-center mb-5"></div>
 
@@ -90,6 +91,11 @@
             map: map,
             title: '<%= spa.name %>'
           });
+          marker.addListener('click', function() {
+            // クリックすると遷移する
+            window.open('https://www.google.com/maps/place/?q=place_id:<%= spa.place_id %>');
+          });
+
           const photoUrl =
             place.photos && place.photos.length > 0 ? place.photos[<%= spa.photo_no %>].getUrl() : "";
           const photoElement = document.getElementById("photo");
