@@ -74,7 +74,6 @@
 - Ruby On Rails(7.0.4)
 
 **【フロントエンド】**
-- Javascript
 - bootstrap5
 
 **【インフラ】**
@@ -83,7 +82,7 @@
 **【API】**
 - GoogleMapsJavascriptAPI
 - GoogleMapsPlacesAPI
-- GoogleMapsGeocordingAPI
+- GeolocationAPI
 
 ## ■ 画面遷移図(figmaリンク)
 
