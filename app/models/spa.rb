@@ -1,4 +1,5 @@
 class Spa < ApplicationRecord
+  acts_as_taggable_on :tags
   has_many :bookmarks, dependent: :destroy
 
   enum spring_quality: { simple: 0, chloride: 1, bicarbonate: 2, sulfur: 3, sulfate: 4, acid: 5, iron_containing: 6 }
