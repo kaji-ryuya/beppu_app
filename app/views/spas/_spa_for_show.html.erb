@@ -14,7 +14,9 @@
     <div id="rating-photo" class="text-center"></div>
   </div>
   <div class="text-start mb-3 rating-width">
-    <%= render 'tags', tag_list: spa.tag_list %>
+    <% spa.tag_list.each do |tag|%>
+      <%= link_to tag, spas_path(tag_name: tag), class: "btn btn-outline-primary btn-sm tag-btn" %>
+    <% end %>
   </div>
 </div>
 <div class='row'>
