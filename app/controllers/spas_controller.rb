@@ -1,17 +1,22 @@
 class SpasController < ApplicationController
-  before_action :set_spa, only: %i[ show ]
   before_action :require_login, only: %i[bookmarks]
 
-  # GET /spas or /spas.json
   def index
-    @q = Spa.ransack(params[:q])
+    if params[:tag_name]
+      @q = Spa.tagged_with("#{params[:tag_name]}").ransack(params[:q])
+    else
+      @q = Spa.ransack(params[:q])
+    end
     spa_times_search = @q.result.ransack(closing_time_gteq: @q.opening_time_lteq)
 
     @spas = spa_times_search.result(distinct: true).page(params[:page]).order(id: :asc)
+    
   end
 
-  # GET /spas/1 or /spas/1.json
-  def show; end
+  def show
+    @spa = Spa.find(params[:id])
+
+  end
 
   def bookmarks
     @q = current_user.bookmark_spas.ransack(params[:q])
@@ -20,9 +25,4 @@ class SpasController < ApplicationController
     @spas = spa_times_search.result(distinct: true).page(params[:page]).order(id: :asc)
   end
 
-  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_spa
-    @spa = Spa.find(params[:id])
-  end
 end

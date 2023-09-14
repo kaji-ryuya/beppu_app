@@ -1,6 +1,14 @@
 <% content_for(:title, '温泉一覧') %>
 <div class='container'>
   <h1>温泉一覧</h1>
+  <% if params[:tag_name].present? %>
+    <div class="d-flex flex-row justify-content">
+      <p class="col-sm-7 col-md-4 col-lg-3">タグ絞り込み：<%=params[:tag_name] %></p>
+      <div>
+      <%= link_to '戻る', spas_path, class: "col btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  <% end %>
   <%= render 'shared/search_form', url: spas_path %>
   <div id="spas" class="row">
     <% @spas.each do |spa| %>

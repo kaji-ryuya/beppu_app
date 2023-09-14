@@ -11,6 +11,7 @@ class SpaDashboard < Administrate::BaseDashboard
     id: Field::Number,
     address: Field::String,
     bookmarks: Field::HasMany,
+    tag_list: Field::String,
     business_time: Field::String,
     charactor: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     family_bath_info: Field::String,
@@ -50,6 +51,8 @@ class SpaDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    name
+    tag_list
     address
     business_time
     charactor
@@ -62,7 +65,6 @@ class SpaDashboard < Administrate::BaseDashboard
     lng
     location
     message
-    name
     parking
     photo_no
     place
@@ -79,7 +81,9 @@ class SpaDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    name
     address
+    tag_list
     business_time
     charactor
     family_bath_info
@@ -91,7 +95,6 @@ class SpaDashboard < Administrate::BaseDashboard
     lng
     location
     message
-    name
     parking
     photo_no
     place

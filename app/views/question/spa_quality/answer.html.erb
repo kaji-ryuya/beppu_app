@@ -15,7 +15,7 @@
   </div>
   <div id="spas" class="row">
     <% @spas.each do |spa| %>
-      <div class="text-center col-lg-4 col-md-6">
+      <div class="text-center col-lg-4 col-md-6 spa-index">
         <%= render 'spas/spa_for_index', { spa: spa } %>
       </div>
     <% end %>

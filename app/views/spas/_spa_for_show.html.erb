@@ -1,17 +1,23 @@
 <div class='d-flex align-items-center row'>
-  <div class='spa-name col-sm'>
+  <div class='spa-name col'>
     <h1><%= spa.name %></h1>
   </div>
-  <div class='col-sm text-end'>
-    <!-- ブックマークボタン設置予定 -->
+  <div class='text-end col'>
     <% if logged_in? %>
       <%= render 'bookmark_button', spa: spa  %>
     <% end %>
   </div>
 </div>
-<div class="text-start mb-3 rating-width">
-  <div id="rating" class="text-center"></div>
-  <div id="rating-photo" class="text-center"></div>
+<div class='d-flex align-items-center row'>
+  <div class="text-start mb-3 rating-width">
+    <div id="rating" class="text-center"></div>
+    <div id="rating-photo" class="text-center"></div>
+  </div>
+  <div class="text-start mb-3 rating-width">
+    <% spa.tag_list.each do |tag|%>
+      <%= link_to tag, spas_path(tag_name: tag), class: "btn btn-outline-primary btn-sm tag-btn" %>
+    <% end %>
+  </div>
 </div>
 <div class='row'>
     
