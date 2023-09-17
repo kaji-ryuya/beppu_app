@@ -11,7 +11,7 @@ class SpaDashboard < Administrate::BaseDashboard
     id: Field::Number,
     address: Field::String,
     bookmarks: Field::HasMany,
-    tag_list: Field::String,
+    tag_list: StringTagField,
     business_time: Field::String,
     charactor: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     family_bath_info: Field::String,
