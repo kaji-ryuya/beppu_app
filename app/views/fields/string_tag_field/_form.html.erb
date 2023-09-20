@@ -1,0 +1,6 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+  <%= text_field_tag "#{f.object_name}[#{field.attribute}]", field.joined %>
+</div>
